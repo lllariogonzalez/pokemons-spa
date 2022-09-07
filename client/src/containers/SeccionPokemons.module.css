@@ -1,0 +1,29 @@
+/* .seccion {
+    display: grid;
+    grid-auto-rows: 20rem;
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+    gap: 5px;
+    background-color: yellow;
+    margin: 4em;
+    padding: 2rem;
+    
+} */
+
+.seccion {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    /* grid-template-rows: repeat(4, 1fr); */
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    justify-content: center;
+    align-content: center;
+    background-color: yellow;
+    margin: 4em;
+    padding: 1em;
+    border-radius: 2em;
+    box-shadow: 2px 3px 10px 10px rgb(130, 68, 232);
+    border: 5px solid rgb(140, 70, 250);
+    align-items: center;
+    
+}

@@ -1,0 +1,24 @@
+.align {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    gap: 5px;
+}
+
+.bg {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(133, 68, 232);
+    color: white;
+    /* width: 16em;
+    height: 8em; */
+    background: rgb(137,35,210);
+    background: linear-gradient(353deg, rgba(137,35,210,1) 29%, rgba(199,13,215,1) 62%, rgba(252,0,255,0.5217437316723564) 100%);
+    border-radius: 2em;
+}
+
+.img {
+    width: 8em;
+    height: 8em;
+}
