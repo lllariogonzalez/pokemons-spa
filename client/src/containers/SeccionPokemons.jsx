@@ -40,11 +40,13 @@ export default function SeccionPokemon(props){
     return (
         <>
         <div className={style.seccion}>
-            { pokemons ? pokemons.slice(index,index+numViews).map(pokemon=><CardPokemon key={pokemon.id} image={pokemon.image} types={pokemon.types} name={pokemon.name}/>) : <span>Cargando</span> }
+            { pokemons?.error?<span>{pokemons.error}</span>
+            : pokemons? pokemons.slice(index,index+numViews).map(pokemon=><CardPokemon key={pokemon.id} id={pokemon.id} image={pokemon.image} types={pokemon.types} name={pokemon.name}/>) 
+            : <span>Cargando</span> }
         </div>
-        {index>0?<button onClick={handlePrev}>Prev</button>:<></>}
-        {numeroPag().map((b,i)=><button key={i} onClick={()=>handlePag(i)}>{b}</button>)}
-        {pokemons?.length-index>12?<button onClick={handleNext}>Next</button>:<></>}
+        {<button disabled={index>0?false:true} onClick={handlePrev}>Prev</button>}
+        {numeroPag().map((b,i)=><button className={index+numViews===b*numViews?style.active:""} key={i} onClick={()=>handlePag(i)}>{b}</button>)}
+        {<button disabled={pokemons?.length-index>12?false:true} onClick={handleNext}>Next</button>}
         </>
     )
 }

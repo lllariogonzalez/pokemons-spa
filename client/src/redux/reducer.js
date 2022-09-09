@@ -1,4 +1,4 @@
-import { GET_POKEMONS } from "./actions.js";
+import { CLEAR_SEARCH, GET_POKEMONS, SEARCH_POKEMON } from "./actions.js";
 
 const stateInitial= {}
 
@@ -8,6 +8,16 @@ export default function rootReducer(state = stateInitial, action){
             return {
                 ...JSON.parse(JSON.stringify(state)),
                 pokemons: action.payload
+            }
+        case SEARCH_POKEMON:
+            return {
+                ...JSON.parse(JSON.stringify(state)),
+                pokemons: [action.payload]
+            }
+        case CLEAR_SEARCH:
+            return {
+                ...JSON.parse(JSON.stringify(state)),
+                pokemons: []
             }
         default: return state;
     }

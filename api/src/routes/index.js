@@ -19,14 +19,14 @@ router.get('/pokemons', async (req, res) => {
             return res.json({
                 id: data.id,
                 name: data.name,
-                types: data.types,
+                types: data.types.map(t=>t.type.name),
                 image: data.sprites.other.dream_world.front_default,
                 height: data.height,
                 weight: data.weight,
                 hp: data.stats.find(e=>e.stat.name === 'hp').base_stat,
                 attack: data.stats.find(e=>e.stat.name === 'attack').base_stat,
                 defense: data.stats.find(e=>e.stat.name === 'defense').base_stat,
-                speed: data.stats.find(e=>e.stat.name === 'speed').base_stat,
+                speed: data.stats.find(e=>e.stat.name === 'speed').base_stat
             })
         } catch (error) {
             const pokemonFind = await Pokemon.findOne({where: {name: name}, include: Tipo});
@@ -36,22 +36,32 @@ router.get('/pokemons', async (req, res) => {
                 return res.status(404).send("Pokemon not Found");
             }
         }
+    }
+    try {
+        const {data: {results: pokemons}} = await axios('https://pokeapi.co/api/v2/pokemon?offset=0&limit=40');
+        const promises = pokemons.map(p=>axios(p.url));
+        const promisesResolves = await Promise.all(promises);
+        const pokemonsDetail = promisesResolves.map(p=>{
+            return {
+                id: p.data.id,
+                name: p.data.name,
+                types: p.data.types.map(t=>t.type.name), 
+                image: p.data.sprites.other.dream_world.front_default,
+                height: p.data.height,
+                weight: p.data.weight,
+                hp: p.data.stats.find(e=>e.stat.name === 'hp').base_stat,
+                attack: p.data.stats.find(e=>e.stat.name === 'attack').base_stat,
+                defense: p.data.stats.find(e=>e.stat.name === 'defense').base_stat,
+                speed: p.data.stats.find(e=>e.stat.name === 'speed').base_stat
+            };
+        })
+
+        return res.json(pokemonsDetail);
+
+    } catch (error) {
+        return res.status(404).json({error: "Pokemons not Founds, reload the page"})
     } 
-    const {data: {results: pokemons}} = await axios('https://pokeapi.co/api/v2/pokemon?offset=0&limit=40');
-    if(!pokemons) return res.status(404).json({error: "Pokemons not Founds"})
 
-    const promises = pokemons.map(p=>axios(p.url));
-    const promisesResolves = await Promise.all(promises);
-    const pokemonsDetail = promisesResolves.map(p=>{
-        return {
-            id: p.data.id,
-            name: p.data.name, 
-            types: p.data.types.map(t=>t.type.name), 
-            image: p.data.sprites.other.dream_world.front_default
-        };
-    })
-
-    res.json(pokemonsDetail);
 })
 
 router.get('/pokemons/:idPokemon', async (req, res) => {
@@ -61,7 +71,7 @@ router.get('/pokemons/:idPokemon', async (req, res) => {
         return res.json({
             id: data.id,
             name: data.name,
-            types: data.types,
+            types: data.types.map(t=>t.type.name), 
             image: data.sprites.other.dream_world.front_default,
             height: data.height,
             weight: data.weight,

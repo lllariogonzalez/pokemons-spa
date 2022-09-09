@@ -14,8 +14,18 @@ code {
 
 button {
   background-color: rgb(133, 68, 232);
-    color: white;
-    border: 1px solid white;
-    height: 25px;
-    cursor: pointer;
+  color: white;
+  border: 1px solid white;
+  height: 25px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: rgb(241, 240, 241);
+  color: rgb(217, 215, 220);
+  cursor: not-allowed;
+}
+
+button:hover {
+  text-decoration: underline;
 }

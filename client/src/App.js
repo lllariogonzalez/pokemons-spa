@@ -1,31 +1,34 @@
 import './App.css';
-import { Route, Link } from 'react-router-dom';
-import landingImage from './images/pokemon.png';
+import { Route, Switch } from 'react-router-dom';
 import Nav from './containers/Nav';
 import SeccionPokemons from './containers/SeccionPokemons';
+import Landing from './containers/Landing';
+import PageNotFound from './containers/PageNotFound';
+import PokemonDetail from './components/PokemonDetail';
+
 
 function App() {
   return (
     <div className="App">
-      <Route exact path='/'>
-        <Link to='/home'><button>Home</button></Link>
-        <h1>Henry Pokemon</h1>
-        <img src={landingImage} alt='Landing Background'/>
-      </Route>
-      <Route exact path='/home'>
-        <Nav />
-        <SeccionPokemons />
-      </Route>
-      <Route exact path='/create'>
-        <h1>Build your Pokemon</h1>
-      </Route>
-      <Route path='/pokemons/:idPokemon'>
-        <h1>Pokemon`s Detail</h1>
-      </Route>
+      <Switch>
+        <Route exact path='/'>
+          <Landing />
+        </Route>
+        <Route exact path='/home'>
+          <Nav />
+          <SeccionPokemons />
+        </Route>
+        <Route exact path='/create'>
+          <h1>Build your Pokemon</h1>
+        </Route>
+        <Route exact path='/pokemons/:idPokemon' render={({match})=><PokemonDetail match={match} />}>
+        </Route>
+        <Route>
+          <PageNotFound />
+        </Route>
+      </Switch>
     </div>
   );
 }
 
 export default App;
-
-//https://pokeapi.co/api/v2/pokemon?offset=0&limit=40

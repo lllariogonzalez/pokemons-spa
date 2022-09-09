@@ -1,0 +1,102 @@
+.landing {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    justify-content: center;
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100%, auto);
+    /* display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px; */
+}
+
+.infolanding {
+    background-color: yellow;
+    grid-column: 3/5;
+    grid-row: 1;  
+}
+
+.img {
+    padding: 50px;
+    width: 90%;
+    grid-column: 1/3;
+    grid-row: 1;
+  
+}
+
+/*************************************************/
+
+.landing_Sup {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(137,35,210);
+    background: linear-gradient(138deg, rgba(137,35,210,1) 13%, rgba(199,13,215,1) 37%, rgba(241,255,0,0.9026961126247374) 92%);
+}
+
+
+.landing_image_div {
+    display: flex;
+}
+
+.landing_img {
+    position: relative;
+    width: fit-content;
+    height: 75%;
+    margin: auto;
+    margin-left: 8em;
+}
+
+.landing_text_div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-left: 0px;
+    max-width: 30vw;
+    height: 75%;
+    z-index: 1;
+}
+
+.landing_text_div_homeButton {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    position: relative;
+    margin-left: 2.5em;
+    margin-top: 3em;
+    text-decoration: none;
+    background-color: rgb(255, 16, 16);
+    border-radius: 1em;
+    width: 20%;
+    height: 8vh;
+    border: 3px solid rgb(228, 25, 25);
+    box-shadow: 4px 5px 10px -3px rgba(0,0,0,0.64);
+    
+}
+
+.landing_text_div_homeButton:hover {
+    box-shadow: 0px 0px 8px -3px rgba(0,0,0,0.64);
+    
+}
+
+
+.landing_p_div {
+    position: relative;
+    margin-left: 1.6em;
+    font-size: 1.25em;
+    border: 2px solid black;
+    max-width: 60%;
+}
+
+.landing_h1 {
+    position: relative;
+    margin-top: 1em;
+    font-size: 2.5em;
+    position: relative;
+    width: fit-content;
+}
