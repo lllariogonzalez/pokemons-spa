@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
 import landingImage from '../images/pokemonEditado.png';
-import { getPokemos } from "../redux/actions";
+import { getAllPokemons } from "../redux/actions";
 import style from "./Landing.module.css";
 
 export default function Landing(props){
@@ -10,7 +10,7 @@ export default function Landing(props){
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch(getPokemos());
+        dispatch(getAllPokemons());
     }, [dispatch]);
     
     return(
@@ -29,15 +29,6 @@ export default function Landing(props){
                 
             </div>
         
-        </div>
-    )
-    return (
-        <div className={style.landing}>
-            <div className={style.infolanding}>
-            <h1>Henry Pokemon</h1>
-            <Link to='/home'><button>Home</button></Link>
-            </div>
-            <img className={style.img} src={landingImage} alt='Landing Background'/>
         </div>
     )
 }

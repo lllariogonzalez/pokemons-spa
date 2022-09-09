@@ -8,22 +8,25 @@ export default function Search(props){
     const dispatch = useDispatch();
 
     const handleOnChange = (e)=>{
-        setInput(e.target.value.toUpperCase())
+        setInput(e.target.value)
     }
-    const handleOnClick= ()=>{
+    const handleSubmit= (e)=>{
+        e.preventDefault();
         dispatch(searchPokemon(input.toLowerCase()));
     }
-
+    
     useEffect(()=>{
         return ()=>{
             dispatch(clearSearch());
         }
-    }, [])
+    }, [dispatch])
 
     return (
         <div>
-            <input name="name" value={input} onChange={(e)=>handleOnChange(e)}type="text" placeholder="Nombre del Pokemon ..." />
-            <button onClick={handleOnClick}>Buscar</button>
+            <form onSubmit={(e)=>handleSubmit(e)}>
+                <input onChange={(e)=>handleOnChange(e)} type="search" placeholder="Nombre del Pokemon ..." />
+                <button type="submit">Buscar</button>
+            </form>
         </div>
     )
 }

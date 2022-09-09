@@ -4,19 +4,19 @@ import { useSelector } from "react-redux";
 export default function PokemonDetail({match}){
     
     const idPokemon= match.params.idPokemon;
-    const [pokemonDetail, setPokemon] = useState();
+    const [pokemonDetail, setPokemonDetail] = useState();
     const pokemonFind = useSelector(state=>state.pokemons?.find(p=>p.id===Number(idPokemon)));
         
     useEffect(()=>{
         if(!pokemonFind){
             fetch(`http://localhost:3001/pokemons/${idPokemon}`)
             .then(response=>response.json())
-            .then(data=>setPokemon(data))
+            .then(data=>setPokemonDetail(data))
             .catch(error=>console.log(error))
         } else {
-            setPokemon(pokemonFind);
+            setPokemonDetail(pokemonFind);
         }
-    },[])
+    },[pokemonFind, idPokemon])
 
     return (
         <div>
