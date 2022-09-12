@@ -5,6 +5,7 @@ import SeccionPokemons from './containers/SeccionPokemons';
 import Landing from './containers/Landing';
 import PageNotFound from './containers/PageNotFound';
 import PokemonDetail from './components/PokemonDetail';
+import FormCreate from './components/FormCreate';
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
           <SeccionPokemons />
         </Route>
         <Route exact path='/create'>
-          <h1>Build your Pokemon</h1>
+          <FormCreate/>
         </Route>
         <Route exact path='/pokemons/:idPokemon' render={({match})=><PokemonDetail match={match} />}>
         </Route>

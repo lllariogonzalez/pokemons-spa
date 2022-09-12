@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux";
+import pokeball from "../images/pokeball.svg";
 
 export default function PokemonDetail({match}){
     
@@ -24,7 +25,7 @@ export default function PokemonDetail({match}){
                 <>
                     <h1>ID: {pokemonDetail.id}</h1>
                     <h1>{pokemonDetail.name.toUpperCase()}</h1>
-                    <img src={pokemonDetail.image} alt={`Pokemon ${idPokemon}`} />
+                    <img src={pokemonDetail.image || pokeball } alt={`Pokemon ${idPokemon}`} />
                 </>
             :<span>Cargando Detalles</span> }   
         </div>

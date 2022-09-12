@@ -4,13 +4,14 @@ import pokeball from "../images/pokeball.svg";
 import style from "./CardPokemon.module.css";
 
 export default function CardPokemon(props){
+
     return (
         <Link style={{"textDecoration":"none"}} to={`/pokemons/${props.id}`}>
             <div className={`${style.align} ${style.bg}`}>
                 <div>
                     <h2>{props.name.toUpperCase()}</h2>
                     <ul>
-                        {props.types.map((t,i)=><li key={i}>{t}</li>)}
+                        {props.Types.map((type,i)=><li key={i}>{type.name}</li>)}
                     </ul>
                 </div>
                 <div>

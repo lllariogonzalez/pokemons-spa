@@ -10,9 +10,9 @@ export default function SeccionPokemon(props){
     const pokemonsDisplay = useSelector(state=>state.pokemonsDisplay);
     const [index, setIndex] = useState(0);
     const [pag, setPag] = useState();
-    const numViews= 12;
+    const layoutSeccion= 12;
 
-    function numeroPag(){
+    function paging(){
         const arrButton = []
         for(let i=1;i<=pag;i++){
             arrButton.push(i)
@@ -21,13 +21,13 @@ export default function SeccionPokemon(props){
     }
 
     const handleNext = ()=>{
-        setIndex((prevState)=>prevState+numViews)
+        setIndex((prevState)=>prevState+layoutSeccion)
     }
     const handlePrev = ()=>{
-        setIndex((prevState)=>prevState-numViews)
+        setIndex((prevState)=>prevState-layoutSeccion)
     }
     const handlePag = (i)=>{
-        setIndex(i*numViews)
+        setIndex(i*layoutSeccion)
     }
 
     useEffect(()=>{
@@ -39,19 +39,23 @@ export default function SeccionPokemon(props){
     }, [dispatch]);
 
     useEffect(()=>{
-        setPag(Math.ceil(pokemonsDisplay?.length/numViews))
-    }, [pokemonsDisplay, pag]);
+        const newPag= Math.ceil(pokemonsDisplay?.length/layoutSeccion)
+        if(newPag<pag){
+            setIndex(0);
+        }
+        setPag(newPag);
+    }, [pokemonsDisplay]);
 
     return (
         <>
         <div className={style.seccion}>
-            { pokemons?.error?<span>{pokemons.error}</span>
+            { pokemons?.error?<span>{pokemons.error}</span> 
             :pokemonsDisplay?.error? <span>Pokemon not Found, try again!</span>
-            :pokemonsDisplay?.length? pokemonsDisplay.slice(index,index+numViews).map(pokemon=><CardPokemon key={pokemon.id} id={pokemon.id} image={pokemon.image} types={pokemon.types} name={pokemon.name}/>) 
-            : <span>Cargando</span> }
+            :pokemonsDisplay?.length? pokemonsDisplay.slice(index,index+layoutSeccion).map(pokemon=><CardPokemon key={pokemon.id} id={pokemon.id} image={pokemon.image} Types={pokemon.Types} name={pokemon.name}/>) 
+            :<span>Cargando</span>}
         </div>
         {<button disabled={index>0?false:true} onClick={handlePrev}>Prev</button>}
-        {numeroPag().map((b,i)=><button className={index+numViews===b*numViews?style.active:""} key={i} onClick={()=>handlePag(i)}>{b}</button>)}
+        {paging().map((b,i)=><button className={index+layoutSeccion===b*layoutSeccion?style.active:""} key={i} onClick={()=>handlePag(i)}>{b}</button>)}
         {<button disabled={pokemonsDisplay?.length-index>12?false:true} onClick={handleNext}>Next</button>}
         </>
     )

@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports= (sequelize) => {
-    sequelize.define('Tipo', {
+    sequelize.define('Type', {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -10,5 +10,7 @@ module.exports= (sequelize) => {
         name: {
             type: DataTypes.STRING
         }
+    },{
+        timestamps: false
     })
 }
