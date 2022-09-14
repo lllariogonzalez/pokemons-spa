@@ -37,7 +37,7 @@ export const createPokemon = (creation) => dispatch => {
         'Content-Type': 'application/json'}, body: JSON.stringify(creation)})
     .then(response=> response.json())
     .then(data => {
-        return dispatch({type: CREATE_POKEMON, payload: data});
+        return dispatch({type: CREATE_POKEMON, payload: data.ok});
     })
 };
 

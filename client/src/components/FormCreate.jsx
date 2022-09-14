@@ -1,24 +1,32 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { createPokemon, getAllPokemons, getTypes } from "../redux/actions";
+import { clearDisplay, createPokemon, getAllPokemons, getTypes } from "../redux/actions";
 import style from "./FormCreate.module.css"
 import validate from "../services/validators";
+import Modal from "./Modal";
 
 export default function FormCreate(props){
-
+    const history = useHistory();
     const pokemonsTypes= useSelector(state=>state.pokemonsTypes);
     const pokemonsDisplay = useSelector(state=>state.pokemonsDisplay);
     const dispatch= useDispatch();
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [error, setError] = useState({
         disabled: true,
     })
     const [creation, setCreation] = useState({
+        name: "",
+        weight: "",
+        height: "",
+        image: undefined,
         hp: 30,
         attack: 10,
         defense: 10,
         speed: 10,
         Types: [],
     });
+
     useEffect(()=>{
         if(!pokemonsTypes){
             dispatch(getTypes());
@@ -64,16 +72,34 @@ export default function FormCreate(props){
         }
     }
 
+    const handleOnClose=()=>{
+        setIsModalOpen(false);
+        dispatch(clearDisplay());
+        setCreation((prevState)=>{
+            return {
+                ...prevState,
+                name: "",
+                image: undefined,
+                weight: "",
+                height: "",
+                hp: 30,
+                attack: 10,
+                defense: 10,
+                speed: 10,      
+            }
+        });
+    }
+
     return (
         <>
             <h1>CREATE YOUR POKEMON</h1>
             <form className={style.form} onSubmit={(e)=>handleOnSubmit(e)}>
                 <fieldset>
                     <legend className={style.legend}>POKEMON DESCRIPTION</legend>
-                    <div className={style.input}><label>Name:</label><span className={style.error}>{error.name}</span><input name="name" placeholder="text only, max length 12..." maxLength="12" autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
-                    <div className={style.input}><label>Image:</label><span className={style.error}>{error.image}</span><input name="image" type="url" placeholder="image URL..." autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
-                    <div className={style.input}><label>Weight:</label><span className={style.error}>{error.weight}</span><input name="weight" type="number" min="1" placeholder="less than 1000 kgs" autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
-                    <div className={style.input}><label>Height:</label><span className={style.error}>{error.height}</span><input name="height" type="number" min="1" placeholder="lower than 10 fts" autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
+                    <div className={style.input}><label>Name:</label><span className={style.error}>{error.name}</span><input value={creation.name} name="name" placeholder="text only, max length 12..." maxLength="12" autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
+                    <div className={style.input}><label>Image:</label><span className={style.error}>{error.image}</span><input value={creation.image} name="image" type="url" placeholder="image URL..." autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
+                    <div className={style.input}><label>Weight:</label><span className={style.error}>{error.weight}</span><input value={creation.weight} name="weight" type="number" min="1" placeholder="less than 1000 kgs" autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
+                    <div className={style.input}><label>Height:</label><span className={style.error}>{error.height}</span><input value={creation.height} name="height" type="number" min="1" placeholder="lower than 10 fts" autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
                     {/* <select><option>Nan</option><option>Mario</option></select> */}
                 </fieldset>
                 <fieldset>
@@ -87,12 +113,18 @@ export default function FormCreate(props){
                     <legend className={style.legend}>POKEMON TYPES:</legend>
                     <div className={style.grid}>
                     {pokemonsTypes?.length?
-                    pokemonsTypes.map((type)=><div key={type.id} className={style.input} ><label ><input  onChange={(e)=>handleOnClick(e)} type="checkbox" name="Types" value={type.id} />{type.name}</label></div>)
+                    pokemonsTypes.map((type)=><div key={type.id} className={style.input} ><label ><input onChange={(e)=>handleOnClick(e)} type="checkbox" name="Types" value={type.id} />{type.name}</label></div>)
                     :<></>} 
                     </div>
                     <span className={style.error}>{error.Types}</span>      
                 </fieldset>
-                <button disabled={error.disabled} type="submit">Enviar</button>
+                <button disabled={error.disabled} onClick={()=>setIsModalOpen(true)} type="submit">CREATE POKEMON</button>
+                {isModalOpen && 
+                    <Modal onClose={handleOnClose}>
+                        {Array.isArray(pokemonsDisplay)? <h1>PROCESANDO...</h1>: pokemonsDisplay? <h1>POKEMON CREATED</h1> : <h1>SOMETHING FAILED</h1>}
+                        <button onClick={()=>history.push("/home")}>GO HOME</button>
+                        <button onClick={handleOnClose}>{pokemonsDisplay? "CREATE ANOTHER" : "TRY AGAIN"}</button>
+                    </Modal>}
             </form>
         </>
     )

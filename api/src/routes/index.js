@@ -108,9 +108,9 @@ router.post('/pokemons', async (req, res)=>{
         try {
             const pokemonCreated = await Pokemon.create(newPokemon);
             await pokemonCreated.setTypes(newPokemon.Types)
-            res.json(pokemonCreated);
+            res.json({ok: true});
         } catch (error) {
-            console.log(error)
+            res.json({ok: false});
         }
     }
 })

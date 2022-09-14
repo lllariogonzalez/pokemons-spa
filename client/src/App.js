@@ -22,8 +22,7 @@ function App() {
         <Route exact path='/create'>
           <FormCreate/>
         </Route>
-        <Route exact path='/pokemons/:idPokemon' render={({match})=><PokemonDetail match={match} />}>
-        </Route>
+        <Route exact path='/pokemons/:idPokemon' render={({match})=><PokemonDetail match={match} />} />
         <Route>
           <PageNotFound />
         </Route>
