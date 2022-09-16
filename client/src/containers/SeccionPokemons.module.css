@@ -10,6 +10,10 @@
     
 } */
 
+.flex {
+    display: flex;
+}
+
 .seccion {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
@@ -25,8 +29,9 @@
     box-shadow: 2px 3px 10px 10px rgb(130, 68, 232);
     border: 5px solid rgb(140, 70, 250);
     align-items: center;
-    
+    width: 100%;
 }
+
 .active {
     background-color: yellow;
     color: black;

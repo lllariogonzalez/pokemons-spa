@@ -1,0 +1,41 @@
+.input {
+    display: flex;
+    margin-top: 1px;
+}
+
+/* .form {
+    display:flex;
+    flex-direction:column;
+    width: 400px; 
+    margin: auto;
+} */
+
+.legend {
+    font-weight:500;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.btn {
+    width: 100%;
+    margin-top: 7px;
+}
+
+.flex {
+    display: flex;
+    width: 240px;
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+.legend {
+    font-weight:500;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}

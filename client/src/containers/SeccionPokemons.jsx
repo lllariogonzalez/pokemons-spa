@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CardPokemon from "../components/CardPokemon";
+import Filter from "../components/Filter";
 import { getAllPokemons, setPokemons } from "../redux/actions";
+import Nav from "./Nav";
 import style from "./SeccionPokemons.module.css"
 
 export default function SeccionPokemon(props){
     const dispatch= useDispatch();
     const pokemons= useSelector(state=>state.pokemons);
     const pokemonsDisplay = useSelector(state=>state.pokemonsDisplay);
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [index, setIndex] = useState(0);
     const [pag, setPag] = useState();
     const layoutSeccion= 12;
@@ -36,7 +39,7 @@ export default function SeccionPokemon(props){
         } else {
             dispatch(setPokemons())
         }
-    }, [dispatch]);
+    }, [dispatch, isFilterOpen]);
 
     useEffect(()=>{
         const newPag= Math.ceil(pokemonsDisplay?.length/layoutSeccion)
@@ -48,11 +51,19 @@ export default function SeccionPokemon(props){
 
     return (
         <>
-        <div className={style.seccion}>
-            { pokemons?.error?<span>{pokemons.error}</span> 
-            :pokemonsDisplay?.error? <span>Pokemon not Found, try again!</span>
-            :pokemonsDisplay?.length? pokemonsDisplay.slice(index,index+layoutSeccion).map(pokemon=><CardPokemon key={pokemon.id} id={pokemon.id} image={pokemon.image} Types={pokemon.Types} name={pokemon.name}/>) 
-            :<span>Cargando</span>}
+        <Nav showFilter={isFilterOpen} onFilter={()=>setIsFilterOpen(!isFilterOpen)}></Nav>
+        <div className={style.flex}>
+            <div>
+                {isFilterOpen &&
+                <Filter />
+                }
+            </div>
+            <div className={style.seccion}>
+                { pokemons?.error?<span>{pokemons.error}</span> 
+                :pokemonsDisplay?.error? <span>Pokemon not Found, try again!</span>
+                :pokemonsDisplay?.length? pokemonsDisplay.slice(index,index+layoutSeccion).map(pokemon=><CardPokemon key={pokemon.id} id={pokemon.id} image={pokemon.image} Types={pokemon.Types} name={pokemon.name}/>) 
+                :<span>Cargando</span>}
+            </div>
         </div>
         {<button disabled={index>0?false:true} onClick={handlePrev}>Prev</button>}
         {paging().map((b,i)=><button className={index+layoutSeccion===b*layoutSeccion?style.active:""} key={i} onClick={()=>handlePag(i)}>{b}</button>)}

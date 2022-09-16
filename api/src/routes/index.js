@@ -11,6 +11,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 router.get('/pokemons', async (req, res) => {
+    // SEARCH BY QUERY
     const {name} = req.query;
     if(name) {
         try {
@@ -36,9 +37,9 @@ router.get('/pokemons', async (req, res) => {
             }
         }
     }
-
+    // ALL POKEMONS POKEAPI + DB
     try {
-        const {data: {results: pokemons}} = await axios('https://pokeapi.co/api/v2/pokemon?offset=0&limit=40');
+        const {data: {results: pokemons}} = await axios('https://pokeapi.co/api/v2/pokemon?limit=40');
         const promises = pokemons.map(p=>axios(p.url));
         const pokeApi = await Promise.all(promises);
         const dbPokemons = await Pokemon.findAll({include: Type,});
@@ -54,7 +55,8 @@ router.get('/pokemons', async (req, res) => {
                 hp: p.data.stats.find(e=>e.stat.name === 'hp').base_stat,
                 attack: p.data.stats.find(e=>e.stat.name === 'attack').base_stat,
                 defense: p.data.stats.find(e=>e.stat.name === 'defense').base_stat,
-                speed: p.data.stats.find(e=>e.stat.name === 'speed').base_stat
+                speed: p.data.stats.find(e=>e.stat.name === 'speed').base_stat,
+                originals: true
             };
         })
 
