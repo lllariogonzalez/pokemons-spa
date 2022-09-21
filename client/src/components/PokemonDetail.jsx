@@ -21,6 +21,7 @@ export default function PokemonDetail({match}){
 
     return (
         <div>
+            <h1>POKEMON DETAIL</h1>
             {pokemonDetail? 
                 <>
                     <h1>ID: {pokemonDetail.id}</h1>

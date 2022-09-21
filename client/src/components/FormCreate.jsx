@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { clearDisplay, createPokemon, getAllPokemons, getTypes } from "../redux/actions";
+import { getAllPokemons, getTypes } from "../redux/actions";
 import style from "./FormCreate.module.css"
 import validate from "../services/validators";
 import Modal from "./Modal";
@@ -9,9 +9,10 @@ import Modal from "./Modal";
 export default function FormCreate(props){
     const history = useHistory();
     const pokemonsTypes= useSelector(state=>state.pokemonsTypes);
-    const pokemonsDisplay = useSelector(state=>state.pokemonsDisplay);
     const dispatch= useDispatch();
+    const [isCreated, setIsCreated] = useState();
     const [isModalOpen, setIsModalOpen] = useState(false);
+
     const [error, setError] = useState({
         disabled: true,
     })
@@ -31,12 +32,20 @@ export default function FormCreate(props){
         if(!pokemonsTypes){
             dispatch(getTypes());
         }
-        return ()=>dispatch(getAllPokemons());
     },[dispatch])
 
     const handleOnSubmit = (e)=>{
+        
         e.preventDefault();
-        dispatch(createPokemon(creation));
+
+        fetch(`http://localhost:3001/pokemons`, {method:"POST", headers: {
+        'Content-Type': 'application/json'}, body: JSON.stringify(creation)})
+        .then(response=> response.json())
+        .then(data => {
+            setTimeout(()=>setIsCreated(data), 2000) 
+        })
+
+        dispatch(getAllPokemons());
     }
 
     const handleOnChange = (e)=>{
@@ -74,7 +83,8 @@ export default function FormCreate(props){
 
     const handleOnClose=()=>{
         setIsModalOpen(false);
-        dispatch(clearDisplay());
+        setIsCreated();
+        setError({disabled: true});
         setCreation((prevState)=>{
             return {
                 ...prevState,
@@ -96,7 +106,7 @@ export default function FormCreate(props){
             <form className={style.form} onSubmit={(e)=>handleOnSubmit(e)}>
                 <fieldset>
                     <legend className={style.legend}>POKEMON DESCRIPTION</legend>
-                    <div className={style.input}><label>Name:</label><span className={style.error}>{error.name}</span><input value={creation.name} name="name" placeholder="text only, max length 12..." maxLength="12" autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
+                    <div className={style.input}><label>Name:</label><span className={style.error}>{error.name}</span><input value={creation.name} name="name" placeholder="lower case text only..." maxLength="12" autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
                     <div className={style.input}><label>Image:</label><span className={style.error}>{error.image}</span><input value={creation.image} name="image" type="url" placeholder="image URL..." autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
                     <div className={style.input}><label>Weight:</label><span className={style.error}>{error.weight}</span><input value={creation.weight} name="weight" type="number" min="1" placeholder="less than 1000 kgs" autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
                     <div className={style.input}><label>Height:</label><span className={style.error}>{error.height}</span><input value={creation.height} name="height" type="number" min="1" placeholder="lower than 10 fts" autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
@@ -121,9 +131,11 @@ export default function FormCreate(props){
                 <button disabled={error.disabled} onClick={()=>setIsModalOpen(true)} type="submit">CREATE POKEMON</button>
                 {isModalOpen && 
                     <Modal onClose={handleOnClose}>
-                        {Array.isArray(pokemonsDisplay)? <h1>PROCESANDO...</h1>: pokemonsDisplay? <h1>POKEMON CREATED</h1> : <h1>SOMETHING FAILED</h1>}
-                        <button onClick={()=>history.push("/home")}>GO HOME</button>
-                        <button onClick={handleOnClose}>{pokemonsDisplay? "CREATE ANOTHER" : "TRY AGAIN"}</button>
+                        { isCreated?.ok? <h1>POKEMON CREATED</h1> 
+                        : isCreated?.error? <h1>SOMETHING FAILED</h1>
+                        : <h1>PROCESS...</h1>}
+                        { isCreated? <button onClick={()=>history.push("/home")}>GO HOME</button> : <></>}
+                        { isCreated? <button onClick={handleOnClose}>{isCreated?.ok? "CREATE ANOTHER" : "TRY AGAIN"}</button> : <></>}
                     </Modal>}
             </form>
         </>

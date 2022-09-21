@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CardPokemon from "../components/CardPokemon";
 import Filter from "../components/Filter";
-import { getAllPokemons, setPokemons } from "../redux/actions";
+import { clearDisplay, getAllPokemons, setPokemons } from "../redux/actions";
 import Nav from "./Nav";
 import style from "./SeccionPokemons.module.css"
 
@@ -37,9 +37,14 @@ export default function SeccionPokemon(props){
         if(!pokemons){
             dispatch(getAllPokemons());
         } else {
-            dispatch(setPokemons())
+            dispatch(setPokemons());   
         }
-    }, [dispatch, isFilterOpen]);
+
+        return ()=>{
+            dispatch(clearDisplay());
+        }
+
+    }, [dispatch]);
 
     useEffect(()=>{
         const newPag= Math.ceil(pokemonsDisplay?.length/layoutSeccion)

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTypes, filterAndOrder } from "../redux/actions";
+import { getTypes, filterAndOrder, setPokemons } from "../redux/actions";
 import orderService from "../services/sort.js";
 import filterService from "../services/filter.js";
 import style from "./Filter.module.css";
@@ -17,6 +17,10 @@ export default function Filter(){
         if(!pokemonsTypes){
             dispatch(getTypes());
         }
+        if(allPokemons){
+            dispatch(setPokemons());
+        }
+        return () => dispatch(setPokemons());
     }, [dispatch])
 
     useEffect(()=>{
@@ -71,6 +75,11 @@ export default function Filter(){
                         <legend className={style.legend}>ORDER BY</legend>
                         <div className={style.input}><input onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="name" name="orderBy" /> name</div>
                         <div className={style.input}><input onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="attack" name="orderBy" /> attack</div>
+                        <div className={style.input}><input onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="defense" name="orderBy" /> defense</div>
+                        <div className={style.input}><input onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="speed" name="orderBy" /> speed</div>
+                        <div className={style.input}><input onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="hp" name="orderBy" /> Health point</div>
+                        <div className={style.input}><input onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="weight" name="orderBy" /> weight</div>
+                        <div className={style.input}><input onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="height" name="orderBy" /> height</div>
                     </fieldset>
                     <fieldset>
                         <legend className={style.legend}>ORDER AS</legend>

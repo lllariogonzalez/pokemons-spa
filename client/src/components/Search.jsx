@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { clearDisplay, searchPokemon, setPokemons } from "../redux/actions";
 
 export default function Search(props){
 
+    const pokemons = useSelector(state=>state.pokemons);
     const [input, setInput] = useState("");
     const dispatch = useDispatch();
 
@@ -16,20 +17,15 @@ export default function Search(props){
             dispatch(clearDisplay());
             dispatch(searchPokemon(input.toLowerCase()));
         }else{
-            dispatch(setPokemons());
+            pokemons && dispatch(setPokemons());
         }
+        setInput("");
     }
-    
-    useEffect(()=>{
-        return ()=>{
-            dispatch(clearDisplay());
-        }
-    }, [dispatch])
 
     return (
         <div>
             <form onSubmit={(e)=>handleSubmit(e)}>
-                <input onChange={(e)=>handleOnChange(e)} type="search" placeholder="Nombre del Pokemon ..." autoComplete="off" />
+                <input value={input} onChange={(e)=>handleOnChange(e)} type="search" placeholder="Nombre del Pokemon ..." autoComplete="off" />
                 <button type="submit">{input.length ? "Search" : "Search All"}</button>
             </form>
         </div>

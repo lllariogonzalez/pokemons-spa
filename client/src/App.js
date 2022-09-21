@@ -22,7 +22,7 @@ function App() {
         </Route>
         <Route exact path='/pokemons/:idPokemon' render={({match})=><PokemonDetail match={match} />} />
         <Route>
-          <PageNotFound />
+          <PageNotFound toggle={()=>{}} />
         </Route>
       </Switch>
     </div>

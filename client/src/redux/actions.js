@@ -3,7 +3,6 @@ export const GET_ALL_POKEMONS="GET_ALL_POKEMONS";
 export const SEARCH_POKEMON="SEARCH_POKEMON";
 export const CLEAR_DISPLAY="CLEAR_DISPLAY";
 export const GET_TYPES="GET_TYPES";
-export const CREATE_POKEMON="CREATE_POKEMON";
 export const FILTER_AND_ORDER="FILTER_AND_ORDER";
 
 export const getAllPokemons = () => dispatch => {
@@ -30,15 +29,6 @@ export const getTypes = () => dispatch => {
     .then(response=> response.json())
     .then(data => {
         return dispatch({type: GET_TYPES, payload: data});
-    })
-};
-
-export const createPokemon = (creation) => dispatch => {
-    return fetch(`http://localhost:3001/pokemons`, {method:"POST", headers: {
-        'Content-Type': 'application/json'}, body: JSON.stringify(creation)})
-    .then(response=> response.json())
-    .then(data => {
-        return dispatch({type: CREATE_POKEMON, payload: data.ok});
     })
 };
 
