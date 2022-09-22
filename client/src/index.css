@@ -14,6 +14,7 @@ code {
 
 button {
   background-color: #8544e8;
+  border-radius: 20px;
   color: white;
   border: 1px solid white;
   height: 25px;
@@ -72,3 +73,141 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   outline: none;
 }
  */
+
+
+/* INPUT RANGE STYLE https://youtu.be/T-1dSuMo0TA */
+
+.box {
+  width: 170px;
+  height: 10px;
+  margin: 2px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.05), #ae0e08);
+  border-radius: 40px;
+  /* box-shadow: 15px 15px 20px rgba(0,0,0,0.1), -15px -15px 20px #fff; */
+}
+
+.range {
+  width: 150px;
+  height: 15px;
+  appearance: none;
+  background: #edf1f4;
+  outline: none;
+  border-radius: 15px;
+ /*  box-shadow: 5px 5px 5px rgba(0,0,0,0.1), -5px -5px 10px #fff, inset 5px 5px 5px rgba(0,0,0,0.1); */
+  overflow: hidden;
+}
+
+.range::-webkit-slider-thumb{
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background-image: url("./images/ico-pokeball.png");
+  background-size: cover;
+  background-position: center;
+  /* background: #fff; */
+  border-radius: 50%;
+  border: 1px solid #fff;
+  box-shadow: -107px 0 0 100px #8544e8;
+  cursor: pointer;
+}
+
+#rangeValue {
+  position: relative;
+  text-align: center;
+  width: 70px;
+  font-size: 1em;
+  color: #fff;
+  background: #8544e8;
+  margin-left: 10px;
+  border-radius: 50px;
+  font-weight: 500;
+  /* box-shadow: 5px 5px 10px rgba(0,0,0,0.1), 
+              -5px -5px 10px #fff,
+              inset 5px 5px 10px rgba(0,0,0,0.1), 
+              inset -5px -5px 5px rgba(255,255,255,0.25); */
+}
+
+/* INPUT CHECKBOX  */
+
+
+input[type="checkbox"]{
+  display: none;
+}
+
+.label{
+  position: relative;
+  user-select: none;
+}
+
+.label::before{
+  content:"";
+  background: url("./images/ico-pokeball.png");
+  background-position: center;
+  background-size: contain;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  left: -20px;
+  top: 4px;
+  z-index: 1;
+
+  transform: scale(0) rotateZ(180deg);
+  transition: all 0.4s cubic-bezier(0.54, 0.01, 0, 1.49);
+}
+
+.label::after{
+  content: "";
+  border: 1px solid rgb(255, 255, 255);
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  left: -20.5px;
+  top: 4px;
+  border-radius: 50%;
+}
+
+input[type="checkbox"]:checked + .label::before{
+  transform: scale(1) rotateZ(0deg);
+}
+
+input[type="checkbox"]:checked + .label {
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #030007;
+}
+
+input[type="checkbox"]:checked + .label::after{
+  border: 0px solid rgb(0, 0, 0);
+}
+
+.gif {
+  position: absolute;
+  left: 0px;
+  top: 25px;
+  z-index: 1;
+  width: 200px;
+}
+
+.gifok {
+  position: absolute;
+  left: 0px;
+  top: 50px;
+  z-index: 1;
+  width: 250px;
+}
+
+
+.gifload {
+  position: absolute;
+  left: 180px;
+  top: 10px;
+  z-index: 1;
+  width: 250px;
+}
+
+
+

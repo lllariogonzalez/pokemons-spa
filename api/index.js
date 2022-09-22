@@ -5,9 +5,9 @@ const { db } = require('./src/db.js');
 //db.sync({force: true}).then(() => console.log("db sync"));
 
 app.listen(3001, () => {
-  console.log('%s listening at 3001'); // eslint-disable-line no-console
+  console.log('Server listening at port 3001'); // eslint-disable-line no-console
   db.sync({ force: true }).then(console.log("DB sync"));
 });
 
-module.exports= agent;
+
 // {force: true}

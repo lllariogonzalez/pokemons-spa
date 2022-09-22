@@ -2,7 +2,25 @@
     display: flex; 
     justify-content: space-between;
     margin-top: 1px;
-    background-clip: red;
+    /* margin-left: 20px; */
+    /* background-clip: red; */
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 50px 10px;
+}
+
+.flexcolum {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 50px 10px;
 }
 
 .form {
@@ -19,6 +37,7 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    margin-left: 20px;
 }
 
 .span {
@@ -34,6 +53,47 @@
     align-items: center;
     padding-right: 10px;
     width: 100%;
-    color: red;
+    color: yellow;
     font-size: 12px;
   }
+
+
+.div_Sup {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(137,35,210);
+    background: linear-gradient(138deg, rgba(137,35,210,1) 13%, rgba(199,13,215,1) 37%, rgba(241,255,0,0.9026961126247374) 92%);
+}
+
+.oak_img_div {
+    position: relative;
+    width: 33%;
+    height: 100vh;
+    left: 0px;
+    bottom: 0px;
+}
+
+.oak_img {
+    position: absolute;
+    left: 1.4em;
+    margin-top: 1.75em;
+    width: 82%;
+    height: 90%;
+}
+
+.form_div{
+    display: flex;
+    justify-content: center;
+    width: 34%;
+    height: 100%;
+}
+
+.description_fieldset {
+    background-color: rgba(251, 0, 0, 0.878);
+    color: rgba(255, 255, 255, 0.851);
+    box-shadow: 1px 1px 20px 1px rgba(195, 0, 255, 0.379);
+    border-radius: 20px;
+}

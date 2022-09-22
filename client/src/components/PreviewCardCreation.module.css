@@ -1,0 +1,330 @@
+.gif {
+    /* position: absolute; */
+    /* left: 0px;
+    top: 0px; */
+    /* z-index: 1; */
+    width: 180px;
+}
+
+.card_preview_div {
+    position: relative;
+    display: grid;
+    grid-template-areas: 
+    "ptop"
+    "card"
+    "pbottom";
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2.5fr 1fr;
+    border-radius: 4em;
+    /* opacity: 30%;
+    box-shadow: 2px 2px 5px 10px rgb(239, 43, 43);
+    animation: ejemplo 5s infinite ease-out;
+    animation-timing-function: cubic-bezier(.5,.54,.57,.56);
+    z-index: 0; */
+    /* border: 2px solid black; */
+    top: 2em;
+    left: 1em;
+    
+}
+
+@keyframes ejemplo {
+    5% {
+        opacity: 40%;
+    }
+    20% {
+        opacity: 60%;
+
+    }
+    35% {
+        opacity: 75%;
+
+    }
+    50% {
+        opacity: 100%;
+        background-color: rgb(137,35,210);
+        box-shadow: 0px 0px 20px 2px rgb(137,35,210);
+
+    }
+    65% {
+        opacity: 75%;
+
+    }
+    80% {
+        opacity: 60%;
+
+    }
+    95% {
+        opacity: 35%;
+
+    }
+    
+}
+
+
+.pokedexTopHalf {
+    /* top: 2.2em;
+    left: 2em; */
+    grid-area: ptop;
+
+}
+
+
+.pokedexBottomHalf {
+    position: absolute;
+    z-index: 1;
+    grid-area: pbottom;
+
+
+}
+
+.preview_div {
+    position: relative;
+    grid-area: card;
+    z-index: 1;
+    display: grid;
+    overflow: hidden;
+    grid-template-areas: 
+        "name name name name"
+        "img img hp speed"
+        "img img attack defense"
+        "img img height weight"
+        "types types types types";
+    grid-template-rows: 1.2fr 2fr 2fr 2fr 1.2fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* width: 20.6em; */
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+.gridArea_nameDiv {
+    position: relative;
+    color: rgb(255, 247, 0);
+    grid-area: name; 
+    width:100%;
+    height:100%;
+    border-bottom: 3px solid white;
+    border-radius: 0% 0% 10% 10%;
+    overflow: hidden;
+}
+
+.gridArea_nameDiv span{
+    position: relative;
+    top: 10%;
+    z-index: 2;
+    font-size: 1.5em;
+    font-weight: 500;
+    transition: .5s ease all;
+}
+
+.gridArea_nameDiv::after {
+    padding: 15px;
+    content: "name:";
+    width: 10%;
+    height: 100%;
+    position: absolute;
+    left: -80px;
+    z-index: 999;
+    transition: .5s ease-in-out all;
+}
+
+.gridArea_nameDiv:hover::after{
+    left: 0px;
+}
+
+.gridArea_nameDiv:hover{
+    background: red;
+    transition: .5s ease all;
+}
+
+.gridArea_nameDiv:hover span{
+    background: transparent;
+    color: yellow;
+    font-size: 1.6em;
+    transition: 1.2s ease all;
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+.gridArea_typesDiv {
+    position: relative;
+    display:flex; 
+    flex-direction:row; 
+    justify-content:center;
+    align-items: center;
+    border-top: 3px solid white;
+    border-radius: 10% 10% 0% 0%;
+    color: white; 
+    grid-area: types; 
+    width:100%; 
+    height:100%; 
+}
+
+.gridArea_typesDiv div{
+    background-color: rgb(255, 0, 0);
+    margin-left: 15px;
+    color: rgb(255, 247, 0);
+    width: fit-content;
+    height: fit-content;
+    padding: 4px;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.gridArea_typesDiv::after {
+    padding: 15px;
+    content: "types:";
+    width: 10%;
+    height: 100%;
+    position: absolute;
+    left: -80px;
+    top: 0px;
+    transition: .5s ease-in-out all;
+}
+
+.gridArea_typesDiv:hover::after{
+    left: 0px;
+}
+
+.gridArea_typesDiv:hover{
+    background: red;
+    transition: .5s ease all;
+}
+
+.gridArea_typesDiv:hover div{
+    background: transparent;
+    color: yellow;
+    transform: scale(1.1, 1.1);
+    transition: 1.2s ease all;
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+.gridArea_heightDiv {
+    display:flex;
+    flex-direction:column;
+    flex-direction:column;
+    justify-content: center;
+    color: white;
+    grid-area: height; 
+    width:100%;
+    height:100%
+}
+
+.gridArea_heightDiv:hover{
+    color: yellow;
+    transform: scale(1.07, 1.07);
+    transition: .2s ease-in-out;
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+.gridArea_weightDiv {
+    display:flex;
+    flex-direction:column;
+    flex-direction:column;
+    justify-content: center;
+    color: white;
+    grid-area: weight; 
+    width:100%;
+    height:100%
+}
+
+.gridArea_weightDiv:hover{
+    color: yellow;
+    transform: scale(1.07, 1.07);
+    transition: .2s ease-in-out;
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+.gridArea_hpDiv {
+    display:flex;
+    flex-direction:column;
+    flex-direction:column;
+    justify-content: center;
+    color: white;
+    grid-area: hp; 
+    width:100%;
+    height:100%
+}
+
+.gridArea_hpDiv:hover{
+    color: yellow;
+    transform: scale(1.07, 1.07);
+    transition: .2s ease-in-out;
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+.gridArea_attackDiv {
+    display:flex;
+    flex-direction:column;
+    flex-direction:column;
+    justify-content: center;
+    color: white;
+    grid-area: attack; 
+    width:100%;
+    height:100%
+}
+
+.gridArea_attackDiv:hover{
+    color: yellow;
+    transform: scale(1.07, 1.07);
+    transition: .2s ease-in-out;
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+.gridArea_defenseDiv {
+    display:flex;
+    flex-direction:column;
+    flex-direction:column;
+    justify-content: center;
+    color: white;
+    grid-area: defense; 
+    width:100%;
+    height:100%
+}
+
+.gridArea_defenseDiv:hover{
+    color: yellow;
+    transform: scale(1.07, 1.07);
+    transition: .2s ease-in-out;
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+.gridArea_speedDiv {
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    grid-area: speed; 
+    width:100%;
+    height:100%
+}
+
+.gridArea_speedDiv:hover{
+    color: yellow;
+    transform: scale(1.07, 1.07);
+    transition: .2s ease-in-out;
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+.gridArea_imgDiv {
+    display:flex;
+    flex-direction:column;
+    grid-area: img;
+    justify-content: center;
+    align-items: center;
+    width:200px;
+}
+
+
+
+

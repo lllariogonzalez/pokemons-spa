@@ -1,9 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
-import landingImage from '../images/pokemonEditado.png';
 import { getAllPokemons } from "../redux/actions";
+//styles
 import style from "./Landing.module.css";
+//images
+import landingImage from '../images/pokemonEditado.png';
+import pokefire from '../images/pokefire.gif';
+import ashPokemons from '../images/ashPokemons.gif';
+
 
 export default function Landing(props){
 
@@ -23,12 +28,15 @@ export default function Landing(props){
                 <h1 className={style.landing_h1}>👋🏻Bienvenido!</h1>
                 <div className={style.landing_p_div}>
                     <p>Aqui encontraras tus pokemons favoritos, podras conocer sus stats,
-                        sus tipos y mas. <br /><b>Vamos a divertirnos!</b></p>
+                        sus tipos y mucho mas. Ademas crear tus propios Pokemons <br /><b>Vamos a divertirnos!</b></p>
+                    <svg>
+                        <rect x="0" y="0"></rect>
+                    </svg>
                 </div>
-                <Link to='/home'><button className={style.landing_text_div_homeButton}>Home</button></Link>
-                
+                <Link to='/home'><button className={style.landing_text_div_homeButton}>GO</button></Link>
             </div>
-        
+        <img className={style.fireGif} src={pokefire}></img>
+        <img className={style.ashPokemons} src={ashPokemons}></img>
         </div>
     )
 }

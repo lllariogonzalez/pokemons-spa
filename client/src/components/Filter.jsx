@@ -17,14 +17,15 @@ export default function Filter(){
         if(!pokemonsTypes){
             dispatch(getTypes());
         }
-        if(allPokemons){
+        if(allPokemons){ 
             dispatch(setPokemons());
         }
-        return () => dispatch(setPokemons());
+        if(Array.isArray(allPokemons))
+        return () => dispatch(setPokemons());   
     }, [dispatch])
 
     useEffect(()=>{
-        if(allPokemons){
+        if(Array.isArray(allPokemons)){ // si pokemons existe pero no es array de pokemons sino obj error
             let pokemons=[...JSON.parse(JSON.stringify(allPokemons))]
             pokemons = filterService(pokemons, filter);
             if(pokemons && pokemons.length===0){

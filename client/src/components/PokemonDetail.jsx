@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux";
 import pokeball from "../images/pokeball.svg";
+import PreviewCardCreation from "./PreviewCardCreation";
 
 export default function PokemonDetail({match}){
     
@@ -22,13 +23,17 @@ export default function PokemonDetail({match}){
     return (
         <div>
             <h1>POKEMON DETAIL</h1>
+            <div style={{width:"1200px", height: "300px"}}>
             {pokemonDetail? 
-                <>
+                <PreviewCardCreation creation={{...pokemonDetail}}/>
+               /*  <>
                     <h1>ID: {pokemonDetail.id}</h1>
                     <h1>{pokemonDetail.name.toUpperCase()}</h1>
                     <img src={pokemonDetail.image || pokeball } alt={`Pokemon ${idPokemon}`} />
-                </>
-            :<span>Cargando Detalles</span> }   
+                </> */
+                
+            :<span>Cargando Detalles</span> }
+            </div>   
         </div>
     )
 }
