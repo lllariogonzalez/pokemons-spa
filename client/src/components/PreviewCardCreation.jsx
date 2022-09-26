@@ -21,7 +21,7 @@ export default function PreviewCardCreation({creation}){
 
     
     return (
-        <div>
+        <div className={style.flex}>
             <div className={style.card_preview_div }>
                 <img className={style.pokedexTopHalf} src={pokedexTopHalf} alt="" />
                 <div className={style.preview_div} >
@@ -54,7 +54,7 @@ export default function PreviewCardCreation({creation}){
                         <img className={style.gif} src={creation.image || whosThatPokemon} alt="" />
                     </div>
                     <div className={style.gridArea_typesDiv} >
-                        {creation.Types.length>0 && creation.Types.length<3? typesNames(creation.Types).map(el=> <div>{el.toUpperCase()}</div>) : <span>"up to two types"</span>}
+                        {creation.Types.length>0 && creation.Types.length<3? typesNames(creation.Types).map((el,i)=> <div key={i}>{el.toUpperCase()}</div>) : <span>"up to two types"</span>}
                     </div>
                 </div>
                 <img className={style.pokedexBottomHalf} src={pokedexBottomHalf} alt="" />

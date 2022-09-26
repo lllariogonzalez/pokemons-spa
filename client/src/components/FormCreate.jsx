@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Prompt, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPokemons, getTypes } from "../redux/actions";
 import style from "./FormCreate.module.css"
@@ -7,7 +7,7 @@ import validate from "../services/validators";
 import Modal from "./Modal";
 import PreviewCardCreation from "./PreviewCardCreation";
 //images
-import oka01 from "../images/OAK01.png";
+import oka01 from "../images/oakSmall.png";
 import load from "../images/loadingPikachu.gif";
 import loadError from "../images/404-error-pokegif.gif";
 import loadOk from "../images/pikaPopUp.gif";
@@ -48,7 +48,7 @@ export default function FormCreate(props){
         'Content-Type': 'application/json'}, body: JSON.stringify(creation)})
         .then(response=> response.json())
         .then(data => {
-            setTimeout(()=>setIsCreated(data), 10000) 
+            setTimeout(()=>setIsCreated(data), 3000) 
         })
 
         dispatch(getAllPokemons());
@@ -107,16 +107,15 @@ export default function FormCreate(props){
     }
 
     return (
-        <div className={style.div_Sup}>
+        <div className={style.gridCreation}>
             <div className={style.form_div}>
                 <form className={style.form} onSubmit={(e)=>handleOnSubmit(e)}>
                     <fieldset className={style.description_fieldset}>
                         <legend className={style.legend}>POKEMON DESCRIPTION</legend>
-                        <div className={style.input}><label>Name:</label><span className={style.error}>{error.name}</span><input value={creation.name} name="name" placeholder="lower case text only..." maxLength="12" autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
-                        <div className={style.input}><label>Image:</label><span className={style.error}>{error.image}</span><input value={creation.image} name="image" type="url" placeholder="image URL..." autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
-                        <div className={style.input}><label>Weight:</label><span className={style.error}>{error.weight}</span><input value={creation.weight} name="weight" type="number" min="1" placeholder="less than 1000 kgs" autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
-                        <div className={style.input}><label>Height:</label><span className={style.error}>{error.height}</span><input value={creation.height} name="height" type="number" min="1" placeholder="lower than 10 fts" autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
-                        {/* <select><option>Nan</option><option>Mario</option></select> */}
+                        <div className={style.input}><label>Name:</label><span className={style.error}>{error.name}</span><input className={style.input_text} value={creation.name} name="name" placeholder="lower case text only..." maxLength="12" autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
+                        <div className={style.input}><label>Image:</label><span className={style.error}>{error.image}</span><input className={style.input_text} value={creation.image} name="image" type="url" placeholder="image URL..." autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
+                        <div className={style.input}><label>Weight:</label><span className={style.error}>{error.weight}</span><input className={style.input_text} value={creation.weight} name="weight" type="number" min="1" step="0.01" placeholder="less than 1000 kgs" autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
+                        <div className={style.input}><label>Height:</label><span className={style.error}>{error.height}</span><input className={style.input_text} value={creation.height} name="height" type="number" min="1" step="0.01" placeholder="lower than 10 fts" autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
                     </fieldset>
                     <fieldset className={style.description_fieldset}>
                         <legend className={style.legend}>POKEMON STATS</legend>
@@ -134,8 +133,7 @@ export default function FormCreate(props){
                         </div>
                         <span className={style.error}>{error.Types}</span>      
                     </fieldset>
-                    <br />
-                    <button disabled={error.disabled} onClick={()=>setIsModalOpen(true)} type="submit">CREATE POKEMON</button>
+                    <button className={style.btnCreate} disabled={error.disabled} onClick={()=>setIsModalOpen(true)} type="submit">CREATE POKEMON</button>
                 </form>
             </div>
             <div className={style.oak_img_div}>
@@ -143,7 +141,7 @@ export default function FormCreate(props){
             </div>
             <PreviewCardCreation creation={creation} />
             {isModalOpen && 
-                <Modal onClose={handleOnClose}>
+                <Modal>
                     <div className={style.flex}>
                         <div className={style.flex}>
                         { isCreated?.ok?
@@ -207,5 +205,6 @@ export default function FormCreate(props){
                 </Modal>
             }        
         </div>
+
     )
 }

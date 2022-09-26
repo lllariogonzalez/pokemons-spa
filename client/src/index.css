@@ -1,3 +1,10 @@
+:root {
+  --navbar-dark-mode: #24252A;
+  --navbar-ligth-mode: #ff0000;
+
+}
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +12,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(138deg, rgba(137,35,210,1) 13%, rgba(199,13,215,1) 37%, rgba(241,255,0,0.9026961126247374) 92%);
+  min-height: 100vh;
 }
 
 code {
@@ -13,67 +22,150 @@ code {
 }
 
 button {
-  background-color: #8544e8;
-  border-radius: 20px;
-  color: white;
-  border: 1px solid white;
-  height: 25px;
+  text-align: center;
+  padding: 2px 20px;
+  margin: 5px;
+  background-color: var(--navbar-dark-mode);
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  /* letter-spacing: 1px; */
+  overflow: hidden;
+  transition: 0.5s;
+  border-radius: 3.125rem;
+  height: 1.875rem;
   cursor: pointer;
 }
 
+
 button:disabled {
-  background-color: rgb(241, 240, 241);
-  color: rgb(217, 215, 220);
+  background-color: rgba(75, 61, 61, 0.934);
+  color: rgb(112, 74, 74);
   cursor: not-allowed;
 }
 
-button:hover {
-  text-decoration: underline;
+button:enabled:hover {
+  background-color: #c72910;
+  box-shadow: 0 0 20px 1px rgba(255,0,0,0.5);
 }
 
-/* Inputs type range*/
 
 
-/* input[type='range']:focus {
-  outline: none;
+/* BUTTON https://youtu.be/YrOq7OpRV8I */ 
+
+.btnPrincipal{
+  position: relative;
+  width: 155px;
+  height: 40px;
+  margin: 0px;
 }
 
-input[type='range'],
-input[type='range']::-webkit-slider-runnable-track,
-input[type='range']::-webkit-slider-thumb {
-  -webkit-appearance: none;
+.btnPrincipal a{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-radius: 30px;
+  color: #fff;
+  z-index: 1;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-decoration: none;
+  overflow: hidden;
+  backdrop-filter: blur(15px);
+  transition: 0.5s;
 }
 
-input[type=range]::-webkit-slider-thumb {
-  background-color: white;
-  width: 15px;
-  height: 15px;
-  border: 1px solid #333;
-  border-radius: 50%;
-  margin-top: -6px;
+.btnPrincipal:hover a{
+  letter-spacing: 3px;
 }
 
-input[type=range]::-webkit-slider-runnable-track {
-  background-color: #8544e8;
-  height: 5px;
-  border-radius: 5px;
+.btnPrincipal a::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(255,255,255,0.15), transparent);
+  transform: skewX(45deg) translateX(0);
+  transition: 0.5s;
 }
 
-input[type=range]::-webkit-fill-lower {
-  background-color: #8544e8;
+.btnPrincipal:hover a::before{
+  transform: skewX(45deg) translateX(200%);
+}
+
+.btnPrincipal::before{
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -5px;
+  width: 30px;
+  height: 10px;
+  background: #fff;
   border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0;
+
 }
 
-input[type=range]::-webkit-fill-upper {
-  background: #8544e8;
+.btnPrincipal:hover::before{
+  bottom: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
+  transition-delay: 0.1s;
+}
+
+/* .btnPrincipal::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -5px;
+  width: 30px;
+  height: 10px;
+  background: #f00;
   border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0;
+
 }
 
-input[type=range]:focus::-webkit-slider-runnable-track {
-  outline: none;
+.btnPrincipal:hover::after{
+  top: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
+  transition-delay: 0.5s;
 }
- */
 
+
+.btnPrincipal::after {
+  background: #e4241d;
+  box-shadow: 0 0 5px #e4241d,
+  0 0 15px #e4241d,
+  0 0 30px #e4241d,
+  0 0 30px #e4241d;
+} */
+
+.btnPrincipal::before{
+  background: #e4241d;
+  box-shadow: 0 0 5px #e4241d,
+  0 0 15px #e4241d,
+  0 0 30px #e4241d,
+  0 0 30px #e4241d;
+}
 
 /* INPUT RANGE STYLE https://youtu.be/T-1dSuMo0TA */
 
@@ -138,6 +230,12 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 input[type="checkbox"]{
   display: none;
 }
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #d9d9d9d5;
+  opacity: 70%;
+}
+
 
 .label{
   position: relative;
@@ -209,5 +307,86 @@ input[type="checkbox"]:checked + .label::after{
   width: 250px;
 }
 
+a{
+  text-decoration: none;
+  color: white;
 
+}
 
+.active {
+  border-bottom: 3px solid #c72910;
+  padding: 5px;
+}
+
+/* TYPES COLOR POKEMONS */
+
+.normal{
+  background: rgb(255, 255, 255);
+}
+.flying{
+  background: rgb(37, 255, 233);
+}
+.ground{
+  background: rgb(102, 81, 4);
+  color: white;
+}
+.bug{
+  background: rgb(47, 242, 33);
+}
+.steel{
+  background: rgb(155, 155, 142);
+}
+.water{
+  background: rgb(30, 164, 247);
+  color: white;
+}
+.electric{
+  background: rgb(242, 235, 33);
+}
+.ice{
+  background: rgb(17, 0, 255);
+  color: white;
+}
+.dark{
+  background: rgb(0, 0, 0);
+  color: white;
+}
+.unknown{
+  background: none;
+  color: white;
+}
+.fighting{
+  background: rgb(248, 157, 12);  
+}
+.poison{
+  background: rgb(176, 206, 5);
+}
+.rock{
+  background: rgb(113, 81, 81);
+}
+.ghost{
+  background: rgb(128, 15, 162);
+  color: white;
+}
+.fire{
+  background: rgb(252, 56, 12);
+  color: white;
+}
+.grass{
+  background: rgb(31, 94, 10);
+  color: white;
+}
+.psychic{
+  background: rgb(247, 10, 156);
+  color: white;
+}
+.dragon{
+  background: rgb(111, 6, 6);
+  color: white;
+}
+.fairy{
+  background: rgb(224, 121, 232);
+}
+.shadow{
+  background: rgba(183, 183, 183, 0.286);
+}

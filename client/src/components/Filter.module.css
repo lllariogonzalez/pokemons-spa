@@ -26,9 +26,8 @@
 
 .flex {
     display: flex;
+    margin: 30px;
     width: 240px;
-    margin-top: 15px;
-    margin-left: 5px;
 }
 
 .legend {

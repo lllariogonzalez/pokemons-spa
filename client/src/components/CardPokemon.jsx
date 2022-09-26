@@ -1,23 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import pokeball from "../images/pokeball.svg";
+import pokegif from "../images/whos-that.gif";
 import style from "./CardPokemon.module.css";
 
 export default function CardPokemon(props){
 
     return (
-        <Link style={{"textDecoration":"none"}} to={`/pokemons/${props.id}`}>
-            <div className={`${style.align} ${style.bg}`}>
-                <div>
-                    <h2>{props.name.toUpperCase()}</h2>
-                    <ul>
-                        {props.Types.map((type,i)=><li key={i}>{type.name}</li>)}
-                    </ul>
-                </div>
-                <div>
-                    <img className={style.img} src={props.image || pokeball} alt="" />
+            <div className={style.container}>
+                <div className={`${style.card} ${props.Types[0].name}`}>
+                    <div className={style.imgbox}>
+                        <img src={props.image || pokegif} alt="pokemon"/>
+                        <h2>{props.name.toUpperCase()}</h2>
+                    </div>
+                    <div className={style.content}>
+                        <div className={style.divtypes}>
+                            {props.Types.map((type,i)=><span key={i} className={`${type.name}`}>{type.name.toUpperCase()}</span>)}
+                        </div>
+                        <div className="btnPrincipal"><Link style={{"textDecoration":"none"}} to={`/pokemons/${props.id}`}>Detalle</Link></div>
+                    </div>
                 </div>
             </div>
-        </Link>
     )
 }

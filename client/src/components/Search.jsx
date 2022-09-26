@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearDisplay, searchPokemon, setPokemons } from "../redux/actions";
+import style from "./Search.module.css";
 
 export default function Search(props){
 
@@ -23,11 +24,9 @@ export default function Search(props){
     }
 
     return (
-        <div>
-            <form onSubmit={(e)=>handleSubmit(e)}>
+            <form className={style.searchBar} onSubmit={(e)=>handleSubmit(e)}>
                 <input value={input} onChange={(e)=>handleOnChange(e)} type="search" placeholder="Nombre del Pokemon ..." autoComplete="off" />
-                <button type="submit">{input.length ? "Search" : "Search All"}</button>
+                <button type="submit">{input.length ? "🔍" : "ALL"}</button>
             </form>
-        </div>
     )
 }

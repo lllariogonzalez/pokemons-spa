@@ -21,11 +21,11 @@ describe("<Modal />",()=>{
         expect(el.parentNode).toHaveClass("modal");
     });
 
-    test("clicking the button calls handler once", ()=>{
+    /* test("clicking the button calls handler once", ()=>{
         const el = component.container.querySelector(".modalBackground")  // para seleccionar algo del componente que ya contiene / otra forma es el data-testid en los elementos del componente para seleccionarlos
         fireEvent.click(el);
         expect(mockHandler).toHaveBeenCalledTimes(1);
-    })
+    }) */
 
 });
 

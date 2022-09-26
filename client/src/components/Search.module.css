@@ -1,0 +1,33 @@
+.searchBar{
+    width: 18.75rem;
+    height: 1.875rem;
+    /* border: 4px solid var(--navbar-dark-mode); */
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 0.625rem 1.5625rem rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    border-radius: 3.125rem;
+    padding: 0 0.625rem;
+    backdrop-filter: blur(15px) saturate(120%);
+}
+
+.searchBar input{
+    background: transparent;
+    flex: 1;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    padding: 0 0.3125rem;
+    border-radius: 3.125rem;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+.searchBar button{
+    border-radius: 3.125rem;
+    width: 4.375rem;
+    height: 1.875rem;
+    cursor: pointer;
+}

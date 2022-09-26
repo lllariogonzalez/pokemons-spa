@@ -1,24 +1,98 @@
-.align {
+.container{
+    position: relative;
+    z-index: 10;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
-    gap: 5px;
+    flex-wrap: wrap;
 }
 
-.bg {
+.container .card{
+    position: relative;
+    width: 15.6rem;
+    height: 18.75rem;
+    margin: 1.25rem 1.25rem;
     display: flex;
-    justify-content: space-around;
-    background-color: rgb(133, 68, 232);
-    color: white;
-    /* width: 16em;
-    height: 8em; */
-    background: rgb(137,35,210);
-    background: linear-gradient(353deg, rgba(137,35,210,1) 29%, rgba(199,13,215,1) 62%, rgba(252,0,255,0.5217437316723564) 100%);
-    border-radius: 2em;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 0.625rem 1.5625rem rgba(0,0,0,0.2);
+    /* backdrop-filter: blur(15px); */
 }
 
-.img {
-    width: 8em;
-    height: 8em;
+.container .card .imgbox{
+    max-width: 12rem;
+    max-height: 12rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.5s ease-in-out;
+}
+
+.container .card .content{
+    position: absolute;
+    bottom: -1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem 0;
+    transition: all 0.5s ease-in-out;
+    flex-direction: column;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.container .card:hover .content{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-1.875rem); 
+}
+
+.container .card .content .divtypes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container .card .content .divtypes span{
+    display: inline;
+    font-size: 14px;
+    margin: 5px;
+    padding: 2px 20px;
+    border-radius: 10px;
+    text-transform: none;
+    transition: all 0.5s ease-in-out;
+}
+.container .card .content .divtypes span:hover{
+   background: rgba(0,0,0,0.05);
+   color: #fff;
+   letter-spacing: 0.0625rem;
+}
+
+.container .card:hover .imgbox {
+    transform: translateY(-60px);
+}
+
+.container .card .imgbox img{
+    max-width: 12rem;
+    max-height: 12rem;
+    margin: 0;
+    transition: 0.5s ease-in-out;
+}
+
+.container .card .imgbox h2{
+    margin: 0.125rem 0;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.125em;
+    border-top: 0.125rem solid white;
+}
+
+.container .card:hover .imgbox img{
+    transform:  scaleX(-1.1) scaleY(1.1);
 }

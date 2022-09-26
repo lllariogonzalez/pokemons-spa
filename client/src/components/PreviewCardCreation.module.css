@@ -3,10 +3,17 @@
     /* left: 0px;
     top: 0px; */
     /* z-index: 1; */
-    width: 180px;
+    width: 11.25rem;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .card_preview_div {
+    margin: 0.625rem;
     position: relative;
     display: grid;
     grid-template-areas: 
@@ -15,15 +22,16 @@
     "pbottom";
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 2.5fr 1fr;
-    border-radius: 4em;
+    border-radius: 4rem;
     /* opacity: 30%;
     box-shadow: 2px 2px 5px 10px rgb(239, 43, 43);
     animation: ejemplo 5s infinite ease-out;
     animation-timing-function: cubic-bezier(.5,.54,.57,.56);
     z-index: 0; */
     /* border: 2px solid black; */
-    top: 2em;
-    left: 1em;
+    /* top: 2em;
+    left: 1em; */
+    width: 22.5rem;
     
 }
 
@@ -62,17 +70,24 @@
 
 
 .pokedexTopHalf {
-    /* top: 2.2em;
-    left: 2em; */
+    position: absolute;
     grid-area: ptop;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 3.125rem 3.125rem 0 0;
+    width: 100%;
+    bottom: 0rem;
+    
 
 }
 
 
 .pokedexBottomHalf {
     position: absolute;
-    z-index: 1;
     grid-area: pbottom;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0 0 3.125rem 3.125rem;
+    width: 100%;
+    top: 0rem;
 
 
 }
@@ -80,7 +95,6 @@
 .preview_div {
     position: relative;
     grid-area: card;
-    z-index: 1;
     display: grid;
     overflow: hidden;
     grid-template-areas: 
@@ -91,11 +105,27 @@
         "types types types types";
     grid-template-rows: 1.2fr 2fr 2fr 2fr 1.2fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    /* width: 20.6em; */
+    width: 100%;
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+.preview_div::after {
+    content: "";
+    position: absolute;
+    top: 0rem;
+    left: 6.875rem;
+    width: 12.5rem;
+    height: 28.125rem;
+    background: rgba(255, 255, 255, 0.225);
+    transform: skewY(20deg) rotate(90deg) translateX(-37.5rem);
+    transition: 0.7s ease-in-out;
+}
 
+
+.preview_div:hover::after {
+    transform: skewY(10deg) rotate(90deg) translateX(31.25rem);
+
+}
 
 /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 
@@ -105,7 +135,7 @@
     grid-area: name; 
     width:100%;
     height:100%;
-    border-bottom: 3px solid white;
+    border-bottom: 0.1875rem solid white;
     border-radius: 0% 0% 10% 10%;
     overflow: hidden;
 }
@@ -120,12 +150,12 @@
 }
 
 .gridArea_nameDiv::after {
-    padding: 15px;
+    padding: 0.9375rem;
     content: "name:";
     width: 10%;
     height: 100%;
     position: absolute;
-    left: -80px;
+    left: -5rem;
     z-index: 999;
     transition: .5s ease-in-out all;
 }
@@ -168,18 +198,18 @@
     color: rgb(255, 247, 0);
     width: fit-content;
     height: fit-content;
-    padding: 4px;
-    border-radius: 10px;
+    padding: 0.25rem;
+    border-radius: 0.625rem;
     font-weight: 700;
 }
 
 .gridArea_typesDiv::after {
-    padding: 15px;
+    padding: 0.9375rem;
     content: "types:";
     width: 10%;
     height: 100%;
     position: absolute;
-    left: -80px;
+    left: -5rem;
     top: 0px;
     transition: .5s ease-in-out all;
 }
@@ -322,9 +352,8 @@
     grid-area: img;
     justify-content: center;
     align-items: center;
-    width:200px;
+    width: 12.5rem;
 }
-
 
 
 
