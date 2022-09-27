@@ -59,7 +59,7 @@ export default function Filter(){
                 <form>
                     <fieldset>
                         <legend className={style.legend}>FILTER BY ORIGIN</legend>
-                        <select onChange={(e)=>handleOnChangeFilter(e)} name="origin">
+                        <select className={style.select} onChange={(e)=>handleOnChangeFilter(e)} name="origin">
                             <option value="all">all</option>
                             <option value="originals">originals</option>
                             <option value="created">created</option>
@@ -69,23 +69,27 @@ export default function Filter(){
                         <legend className={style.legend}>FILTER BY TYPE</legend>
                         <div className={style.grid}>
                         {pokemonsTypes?.length?
-                        pokemonsTypes.map((type)=><div className={style.input} key={type.id}><input onChange={(e)=>handleOnChangeFilter(e)} type="radio" value={type.name} name="Types" />{type.name}</div>):<></>} 
+                        pokemonsTypes.map((type)=><div className={style.input} key={type.id}><input id={type.id} onChange={(e)=>handleOnChangeFilter(e)} type="radio" value={type.name} name="Types" /><label htmlFor={type.id} className={`${style.input} ${type.name} label`} >{type.name}</label></div>):<></>} 
                         </div>    
                     </fieldset>
                     <fieldset>
                         <legend className={style.legend}>ORDER BY</legend>
-                        <div className={style.input}><input onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="name" name="orderBy" /> name</div>
-                        <div className={style.input}><input onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="attack" name="orderBy" /> attack</div>
-                        <div className={style.input}><input onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="defense" name="orderBy" /> defense</div>
-                        <div className={style.input}><input onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="speed" name="orderBy" /> speed</div>
-                        <div className={style.input}><input onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="hp" name="orderBy" /> Health point</div>
-                        <div className={style.input}><input onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="weight" name="orderBy" /> weight</div>
-                        <div className={style.input}><input onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="height" name="orderBy" /> height</div>
+                        <div className={style.grid}>
+                        <div className={style.input}><input id="name" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="name" name="orderBy" /><label htmlFor="name" className={`${style.input} label`} > name</label></div>
+                        <div className={style.input}><input id="attack" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="attack" name="orderBy" /><label htmlFor="attack" className={`${style.input} label`} > attack</label></div>
+                        <div className={style.input}><input id="defense" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="defense" name="orderBy" /><label htmlFor="defense" className={`${style.input} label`} > defense</label></div>
+                        <div className={style.input}><input id="speed" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="speed" name="orderBy" /><label htmlFor="speed" className={`${style.input} label`} > speed</label></div>
+                        {/* <div className={style.input}><input id="hp" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="hp" name="orderBy" /><label htmlFor="hp" className={`${style.input} label`} > health point</label></div> */}
+                        <div className={style.input}><input id="weight" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="weight" name="orderBy" /><label htmlFor="weight" className={`${style.input} label`} > weight</label></div>
+                        <div className={style.input}><input id="height" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="height" name="orderBy" /><label htmlFor="height" className={`${style.input} label`} > height</label></div>
+                        </div>   
                     </fieldset>
                     <fieldset>
                         <legend className={style.legend}>ORDER AS</legend>
-                        <div className={style.input}><input onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="ASC" name="orderAs" /> ascend</div>
-                        <div className={style.input}><input onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="DES" name="orderAs" /> descend</div>
+                        <div className={style.grid}>
+                        <div className={style.input}><input id="ASC" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="ASC" name="orderAs" /><label htmlFor="ASC" className={`${style.input} label`} > ascend</label></div>
+                        <div className={style.input}><input id="DES" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="DES" name="orderAs" /><label htmlFor="DES" className={`${style.input} label`} > descend</label></div>
+                        </div>
                     </fieldset>
                 </form>
             </div>

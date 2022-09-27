@@ -1,6 +1,47 @@
-.input {
-    display: flex;
-    margin-top: 1px;
+.input{
+    display: flex; 
+    justify-content: flex-start;
+    margin-top: 0.0625rem;
+    margin-bottom: 0.0625rem;
+    margin-left: 0.625rem;
+    margin-right: 0.625rem;
+}
+.grid label {
+    width: 4rem;
+    cursor: pointer;
+    padding: 1px 10px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    border-radius: 30px;
+    font-size: 16px;
+    transition: 0.5s;
+    user-select: none;
+}
+.grid input[type="radio"]{
+    display: none;
+}
+
+.grid .input {
+    display: flex; 
+    justify-content: center;
+    margin-top: 0.0625rem;
+    margin-bottom: 0.0625rem;
+    margin-left: 0.625rem;
+    margin-right: 0.625rem;
+}
+
+.grid input[type="radio"]:checked + label{
+    box-shadow: 0 0 10px 1px #fff;
+}
+
+.input input[type="radio"]{
+    display: none;
+}
+
+.input label {
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
 }
 
 /* .form {
@@ -12,6 +53,11 @@
 
 .legend {
     font-weight:500;
+    border-radius: 1.25rem;
+}
+
+.flex fieldset{
+    border-radius: 1.25rem;
 }
 
 .grid {
@@ -26,15 +72,28 @@
 
 .flex {
     display: flex;
-    margin: 30px;
-    width: 240px;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
 }
 
 .legend {
     font-weight:500;
+    color: #fff;
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
+
+.select {
+    width: 8rem;
+    padding-left: 0.625rem;
+    background-color: var(--navbar-dark-mode);
+    color: #fff;
+    text-align: left;
+    cursor: pointer;
+    letter-spacing: 0.0725rem;
+}
+

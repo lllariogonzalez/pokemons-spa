@@ -1,12 +1,10 @@
-import './App.css';
-import './index.css';
 import { Route, Switch } from 'react-router-dom';
 import SeccionPokemons from './containers/SeccionPokemons';
 import Landing from './containers/Landing';
 import PageNotFound from './containers/PageNotFound';
-import PokemonDetail from './components/PokemonDetail';
-import FormCreate from './components/FormCreate';
-import Nav from './containers/Nav';
+import PokemonDetail from './containers/PokemonDetail';
+import FormCreate from './containers/FormCreate';
+import Nav from './components/Nav';
 
 
 function App() {

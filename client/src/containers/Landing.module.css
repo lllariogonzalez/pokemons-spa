@@ -13,12 +13,11 @@
 }
 
 .landing_img {
-    position: relative;
-    width: fit-content;
-    height: 75%;
+    position: absolute;
+    width: 35rem;
     margin: auto;
-    left: 10%;
-    margin-left: auto;
+    left: 30%;
+    top: 5%;
 }
 
 .landing_text_div {
@@ -148,4 +147,22 @@
     z-index: 998;
     right: 0%;
     bottom: 0%;
+}
+.pokes {
+    position:absolute;
+    top: 0%;
+    left: 0%;
+    z-index: 997;
+    transform: scaleX(-1);
+}
+
+.fire {
+    position:absolute;
+    overflow: hidden;
+    width: 600px;
+    z-index: 998;
+    left: 0%;
+    bottom: 0%;
+    transform: scaleX(-1);
+
 }

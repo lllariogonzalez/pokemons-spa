@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { Prompt, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPokemons, getTypes } from "../redux/actions";
 import style from "./FormCreate.module.css"
 import validate from "../services/validators";
-import Modal from "./Modal";
-import PreviewCardCreation from "./PreviewCardCreation";
+import Modal from "../components/Modal";
+import PreviewCardCreation from "../components/PreviewCardCreation";
 //images
 import oka01 from "../images/oakSmall.png";
 import load from "../images/loadingPikachu.gif";
@@ -44,8 +44,13 @@ export default function FormCreate(props){
         
         e.preventDefault();
 
+        const newPokemon = {
+            ...creation,
+            Types: creation.Types.map(type=>type.id)
+        }
+
         fetch(`http://localhost:3001/pokemons`, {method:"POST", headers: {
-        'Content-Type': 'application/json'}, body: JSON.stringify(creation)})
+        'Content-Type': 'application/json'}, body: JSON.stringify(newPokemon)})
         .then(response=> response.json())
         .then(data => {
             setTimeout(()=>setIsCreated(data), 3000) 
@@ -66,11 +71,14 @@ export default function FormCreate(props){
     }
 
     const handleOnClick = (e)=>{
+        
+        const type= pokemonsTypes.find(type=>type.id===Number(e.target.value));
+
         if(e.target.checked){
             setCreation((prevState)=>{
                 const newState = {
                     ...prevState,
-                    Types: [...prevState.Types, e.target.value]
+                    Types: [...prevState.Types, type]
                 }
                 setError(validate(newState));
                 return newState;
@@ -79,7 +87,7 @@ export default function FormCreate(props){
             setCreation((prevState)=>{
                 const newState = {
                     ...prevState,
-                    Types: prevState.Types.filter(type=>type!==e.target.value)
+                    Types: prevState.Types.filter(type=>type.id!==Number(e.target.value))
                 }
                 setError(validate(newState));
                 return newState;

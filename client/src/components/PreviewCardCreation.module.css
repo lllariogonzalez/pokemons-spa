@@ -3,10 +3,12 @@
     /* left: 0px;
     top: 0px; */
     /* z-index: 1; */
-    width: 11.25rem;
+    max-width: 11.25rem;
+    max-height: 14.25rem;
 }
 .flex{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -32,6 +34,7 @@
     /* top: 2em;
     left: 1em; */
     width: 22.5rem;
+    min-width: 22rem ;
     
 }
 
@@ -75,6 +78,7 @@
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 3.125rem 3.125rem 0 0;
     width: 100%;
+    min-width: 10rem;
     bottom: 0rem;
     
 
@@ -88,9 +92,8 @@
     border-radius: 0 0 3.125rem 3.125rem;
     width: 100%;
     top: 0rem;
-
-
 }
+
 
 .preview_div {
     position: relative;
@@ -119,6 +122,7 @@
     background: rgba(255, 255, 255, 0.225);
     transform: skewY(20deg) rotate(90deg) translateX(-37.5rem);
     transition: 0.7s ease-in-out;
+    z-index: 100;
 }
 
 
@@ -146,6 +150,7 @@
     z-index: 2;
     font-size: 1.5em;
     font-weight: 500;
+    margin: 0 20px;
     transition: .5s ease all;
 }
 
@@ -348,11 +353,13 @@
 
 .gridArea_imgDiv {
     display:flex;
+    margin: auto;
     flex-direction:column;
     grid-area: img;
     justify-content: center;
     align-items: center;
     width: 12.5rem;
+    height: 14.25rem;
 }
 
 

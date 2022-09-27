@@ -5,7 +5,7 @@ import { getAllPokemons } from "../redux/actions";
 //styles
 import style from "./Landing.module.css";
 //images
-import landingImage from '../images/pokemonEditado.png';
+import landingImage from '../images/logo.png';
 import pokefire from '../images/pokefire.gif';
 import ashPokemons from '../images/ashPokemons.gif';
 
@@ -20,6 +20,8 @@ export default function Landing(props){
     
     return(
         <div className={style.landing_Sup}>
+        <img className={style.fire} src={pokefire}></img>
+        <img className={style.pokes} src={ashPokemons}></img>
             <div className={style.landing_image_div} >
                 <img className={style.landing_img} src={landingImage} alt='Landing Background'/>
             </div>

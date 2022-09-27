@@ -1,10 +1,19 @@
-import React from "react"
+import React from "react";
+import { useHistory } from "react-router-dom";
+import error from "../images/404-error-pokegif.gif";
 
-const PageNotFound = (props) => (
-  <>
-    <h1>404 PAGE NOT FOUND</h1>
-    <p>Uy, llegaste a un mundo desconocido. Mejor regresa al inicio.</p>
-    <button onClick={props.toggle}>TOGGLE</button>
-  </>
-)
-export default PageNotFound
+const PageNotFound = () => {
+
+  const history = useHistory();
+
+  return (
+    <div style={{color:"#fff"}}>
+      <img style={{maxWidth: "40vh"}} src={error} alt="image/gif not found 404"/>
+      <h1>404 PAGE NOT FOUND</h1>
+      <p>You seem to be lost, shall we go back home?</p>
+      <button onClick={()=>history.replace("/home")}>HOME</button>
+    </div>
+  )
+};
+
+export default PageNotFound;

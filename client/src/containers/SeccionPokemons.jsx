@@ -59,21 +59,24 @@ export default function SeccionPokemon(props){
     return (
         <>
         <div className={style.flex}>
-            <div>
-                {isFilterOpen &&
+            
+            {isFilterOpen && pokemonsDisplay &&
+            <div className={style.filter}>
                 <Filter />
-                }
             </div>
+            }
+            
             <div className={style.flexcolum}>
                 <div className={style.fsnav}>
+                    {pokemonsDisplay?.length > 1 || isFilterOpen ? 
                     <button onClick={()=>setIsFilterOpen(!isFilterOpen)}>
-                    {isFilterOpen? "Close Filter" : "Filter / Sort" }
+                        {isFilterOpen? "Close Filter" : "Filter / Sort" }
                     </button>
+                    :<></>}
                     <Search />
                 </div>
                 <div className={style.seccion}>
-                    { pokemons?.error?<span>{pokemons.error}</span> 
-                    :pokemonsDisplay?.error? <div><img src={errorPikachu} alt="error"/><span className={style.span}>Pokemon not Found, try again!</span></div>
+                    {pokemonsDisplay?.error? <div><img src={errorPikachu} alt="error"/><span className={style.span}>Pokemon not Found, try again!</span></div>
                     :pokemonsDisplay?.length? pokemonsDisplay.slice(index,index+layoutSeccion).map(pokemon=><CardPokemon key={pokemon.id} id={pokemon.id} image={pokemon.image} Types={pokemon.Types} name={pokemon.name}/>) 
                     :<div><img src={loadingPikachu} alt="loading"/><span className={style.span}>loading</span></div>}
                 </div>

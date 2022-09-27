@@ -4,6 +4,9 @@
 
 }
 
+.App {
+  text-align: center;
+}
 
 body {
   margin: 0;
@@ -272,13 +275,23 @@ input[type="checkbox"]{
 input[type="checkbox"]:checked + .label::before{
   transform: scale(1) rotateZ(0deg);
 }
+input[type="radio"]:checked + .label::before{
+  transform: scale(1) rotateZ(0deg);
+}
 
 input[type="checkbox"]:checked + .label {
   font-weight: bold;
   text-shadow: 1px 1px 2px #030007;
 }
+input[type="radio"]:checked + .label {
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #030007;
+}
 
 input[type="checkbox"]:checked + .label::after{
+  border: 0px solid rgb(0, 0, 0);
+}
+input[type="radio"]:checked + .label::after{
   border: 0px solid rgb(0, 0, 0);
 }
 
@@ -390,3 +403,4 @@ a{
 .shadow{
   background: rgba(183, 183, 183, 0.286);
 }
+

@@ -5,9 +5,13 @@
     height: 10vh;
 }
 
+.logo{
+    max-width: 4rem;
+}
+
 .align {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     gap: 4em;
 }
