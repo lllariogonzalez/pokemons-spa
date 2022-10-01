@@ -9,7 +9,7 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    gap: 4em;
+    gap: 4rem;
 }
 
 .logo{
@@ -18,4 +18,11 @@
 
 .align a:hover{
     transform: scale(1.05);
+}
+
+@media (max-height: 600px) {
+    .align {
+        justify-content: center;
+        gap: 2rem;
+    }
 }
