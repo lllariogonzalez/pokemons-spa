@@ -1,9 +1,9 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
-import PreviewCardCreation from "../components/PreviewCardCreation.jsx";
+import CardDetail from "../components/CardDetail.jsx";
 
-describe("<PreviewCardComponent />", ()=>{
+describe("<CardDetail />", ()=>{
     
     const creation={
         name: "pokename",
@@ -12,14 +12,13 @@ describe("<PreviewCardComponent />", ()=>{
     }
 
     beforeEach(()=>{
-        render(<PreviewCardCreation creation={creation}/>);
+        render(<CardDetail pokemon={creation}/>);
     });
     
     test("renders images/gifs", ()=>{
         const imgTop = screen.getByAltText("pokedexTop");
         const imgBottom = screen.getByAltText("pokedexBottom");
         const gifPoke = screen.getByAltText("whos that Pokemon?");
-        console.log(imgBottom)
         expect(imgTop).toBeInTheDocument();
         expect(imgBottom).toBeInTheDocument();
         expect(imgBottom).toHaveClass("pokedexBottomHalf");

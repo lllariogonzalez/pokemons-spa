@@ -19,6 +19,7 @@ export default function Search(props){
             dispatch(searchPokemon(input.toLowerCase()));
         }else{
             pokemons && dispatch(setPokemons());
+            props.filter();
         }
         setInput("");
     }

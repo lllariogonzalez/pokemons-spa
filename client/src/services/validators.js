@@ -20,7 +20,8 @@ export default function validate(creation){
     }
 
     if(creation.image){
-        if(!/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(creation.image)){
+        const regex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)/ig; //eslint-disable-line
+        if(!regex.test(creation.image)){
             error.image = 'invalid';
         }
     }
@@ -39,4 +40,4 @@ export default function validate(creation){
       }
     
     return error;
-}
+};

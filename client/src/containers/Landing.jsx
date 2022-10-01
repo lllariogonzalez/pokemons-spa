@@ -6,11 +6,12 @@ import { getAllPokemons } from "../redux/actions";
 import style from "./Landing.module.css";
 //images
 import landingImage from '../images/logo.png';
-import pokefire from '../images/pokefire.gif';
-import ashPokemons from '../images/ashPokemons.gif';
+import frameCharizard from '../images/frameCharizard.gif';
+import framePokemons from '../images/framePokemons.gif';
+import icoPoke from '../images/ico-pokeball.png';
 
 
-export default function Landing(props){
+export default function Landing(){
 
     const dispatch = useDispatch();
 
@@ -19,26 +20,35 @@ export default function Landing(props){
     }, [dispatch]);
     
     return(
-        <div className={style.landing_Sup}>
-        <img className={style.fire} src={pokefire}></img>
-        <img className={style.pokes} src={ashPokemons}></img>
-            <div className={style.landing_image_div} >
-                <img className={style.landing_img} src={landingImage} alt='Landing Background'/>
-            </div>
-
-            <div className={style.landing_text_div} >
-                <h1 className={style.landing_h1}>👋🏻Bienvenido!</h1>
-                <div className={style.landing_p_div}>
-                    <p>Aqui encontraras tus pokemons favoritos, podras conocer sus stats,
-                        sus tipos y mucho mas. Ademas crear tus propios Pokemons <br /><b>Vamos a divertirnos!</b></p>
-                    <svg>
-                        <rect x="0" y="0"></rect>
-                    </svg>
+        <div className={style.flexContainer}>
+        <img className={style.frameCharizard} src={frameCharizard}  alt="frame"/>
+        <img className={style.framePokemons} src={framePokemons}  alt="frame"/>
+            <div className={style.flexContent} >
+                <h1 className={style.title}>HI, NICE TO SEE YOU HERE</h1>
+                <div className={style.content}>
+                    <div className={style.flexSpan}>
+                        <img className={style.ico} src={icoPoke} alt="ico"/>
+                        <span>Find your favourites Pokemons</span>
+                    </div>
+                    <div className={style.flexSpan}>
+                        <img className={style.ico} src={icoPoke} alt="ico"/>
+                        <span>Create your dreams Pokemons</span>
+                    </div>
+                    <div className={style.flexSpan}>
+                        <img className={style.ico} src={icoPoke} alt="ico"/>
+                        <span>Filter and sort as you wish</span>
+                    </div>
+                    <div className={style.flexSpan}>
+                        <img className={style.ico} src={icoPoke} alt="ico"/>
+                        <span>Learn more about them</span>
+                    </div>
                 </div>
-                <Link to='/home'><button className={style.landing_text_div_homeButton}>GO</button></Link>
+                <h2 className={style.title}>LET'S HAVE FUN</h2>
+                <div style={{zIndex: 1}} className="btnPrincipal"><Link to='/home'><span>GO</span></Link></div>
             </div>
-        <img className={style.fireGif} src={pokefire}></img>
-        <img className={style.ashPokemons} src={ashPokemons}></img>
+            <div className={style.flexImage} >
+                <img className={style.logo} src={landingImage} alt='landing logo'/>
+            </div>
         </div>
     )
 }

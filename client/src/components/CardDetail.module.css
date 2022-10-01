@@ -1,17 +1,15 @@
-.gif {
-    /* position: absolute; */
-    /* left: 0px;
-    top: 0px; */
-    /* z-index: 1; */
-    max-width: 11.25rem;
-    max-height: 14.25rem;
-}
-.flex{
+.flexContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
+    z-index: 1;
+}
+
+.gif {
+    max-width: 11.25rem;
+    max-height: 14.25rem;
 }
 
 .card_preview_div {
@@ -25,52 +23,9 @@
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 2.5fr 1fr;
     border-radius: 4rem;
-    /* opacity: 30%;
-    box-shadow: 2px 2px 5px 10px rgb(239, 43, 43);
-    animation: ejemplo 5s infinite ease-out;
-    animation-timing-function: cubic-bezier(.5,.54,.57,.56);
-    z-index: 0; */
-    /* border: 2px solid black; */
-    /* top: 2em;
-    left: 1em; */
     width: 22.5rem;
     min-width: 22rem ;
-    
 }
-
-@keyframes ejemplo {
-    5% {
-        opacity: 40%;
-    }
-    20% {
-        opacity: 60%;
-
-    }
-    35% {
-        opacity: 75%;
-
-    }
-    50% {
-        opacity: 100%;
-        background-color: rgb(137,35,210);
-        box-shadow: 0px 0px 20px 2px rgb(137,35,210);
-
-    }
-    65% {
-        opacity: 75%;
-
-    }
-    80% {
-        opacity: 60%;
-
-    }
-    95% {
-        opacity: 35%;
-
-    }
-    
-}
-
 
 .pokedexTopHalf {
     position: absolute;
@@ -80,10 +35,7 @@
     width: 100%;
     min-width: 10rem;
     bottom: 0rem;
-    
-
 }
-
 
 .pokedexBottomHalf {
     position: absolute;
@@ -93,7 +45,6 @@
     width: 100%;
     top: 0rem;
 }
-
 
 .preview_div {
     position: relative;
@@ -125,10 +76,8 @@
     z-index: 100;
 }
 
-
 .preview_div:hover::after {
     transform: skewY(10deg) rotate(90deg) translateX(31.25rem);
-
 }
 
 /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
@@ -362,5 +311,20 @@
     height: 14.25rem;
 }
 
+@media (max-height: 600px){
+    .flexContainer{
+        height: 100%;
+    }
 
+    .card_preview_div {
+        width: 85vw;
+        height: 100vh;
+        min-width: 80vw;
+    }
 
+    .gridArea_imgDiv {
+        width: 11rem;
+        height: 14.25rem;
+    }
+
+}

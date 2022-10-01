@@ -7,7 +7,7 @@
     flex-wrap: wrap;
 }
 
-.container .card{
+.card{
     position: relative;
     width: 15.6rem;
     height: 18.75rem;
@@ -21,7 +21,7 @@
     /* backdrop-filter: blur(15px); */
 }
 
-.container .card .imgbox{
+.imgbox{
     max-width: 12rem;
     max-height: 12rem;
     position: relative;
@@ -32,9 +32,24 @@
     transition: 0.5s ease-in-out;
 }
 
-.container .card .content{
+.imgbox img{
+    max-width: 12rem;
+    max-height: 12rem;
+    margin: 0;
+    transition: 0.5s ease-in-out;
+}
+
+.imgbox h2{
+    margin: 0.125rem 0;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.125em;
+    border-top: 0.125rem solid white;
+}
+
+.content{
     position: absolute;
-    bottom: -1.25rem;
+    bottom: 0.25rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,20 +61,13 @@
     visibility: hidden;
 }
 
-.container .card:hover .content{
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(-1.875rem); 
-}
-
-.container .card .content .divtypes{
+.divtypes{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-
-.container .card .content .divtypes span{
+.divtypes span{
     display: inline;
     font-size: 14px;
     margin: 5px;
@@ -68,31 +76,23 @@
     text-transform: none;
     transition: all 0.5s ease-in-out;
 }
-.container .card .content .divtypes span:hover{
-   background: rgba(0,0,0,0.05);
-   color: #fff;
-   letter-spacing: 0.0625rem;
-}
 
-.container .card:hover .imgbox {
+.card:hover .imgbox {
     transform: translateY(-60px);
 }
 
-.container .card .imgbox img{
-    max-width: 12rem;
-    max-height: 12rem;
-    margin: 0;
-    transition: 0.5s ease-in-out;
-}
-
-.container .card .imgbox h2{
-    margin: 0.125rem 0;
-    color: #fff;
-    font-weight: 600;
-    letter-spacing: 0.125em;
-    border-top: 0.125rem solid white;
-}
-
-.container .card:hover .imgbox img{
+.card:hover .imgbox img{
     transform:  scaleX(-1.1) scaleY(1.1);
+}
+
+.card:hover .content{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-0.875rem); 
+}
+
+.divtypes span:hover{
+   background: rgba(0,0,0,0.05);
+   color: #fff;
+   letter-spacing: 0.0625rem;
 }

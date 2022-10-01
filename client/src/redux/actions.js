@@ -6,7 +6,7 @@ export const GET_TYPES="GET_TYPES";
 export const FILTER_AND_ORDER="FILTER_AND_ORDER";
 
 export const getAllPokemons = () => dispatch => {
-    return fetch("http://localhost:3001/pokemons")
+    return fetch(`${process.env.REACT_APP_API}/pokemons`)
     .then(response=> response.json())
     .then(data => {
         return dispatch({type: GET_ALL_POKEMONS, payload: data});
@@ -14,7 +14,7 @@ export const getAllPokemons = () => dispatch => {
 };
 
 export const searchPokemon = (name) => dispatch => {
-    return fetch(`http://localhost:3001/pokemons?name=${name}`)
+    return fetch(`${process.env.REACT_APP_API}/pokemons?name=${name}`)
     .then(response=> response.json())
     .then(data => {
         return dispatch({type: SEARCH_POKEMON, payload: data});
@@ -25,7 +25,7 @@ export const searchPokemon = (name) => dispatch => {
 };
 
 export const getTypes = () => dispatch => {
-    return fetch(`http://localhost:3001/types`)
+    return fetch(`${process.env.REACT_APP_API}/types`)
     .then(response=> response.json())
     .then(data => {
         return dispatch({type: GET_TYPES, payload: data});

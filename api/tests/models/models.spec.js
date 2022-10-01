@@ -2,10 +2,6 @@ const { Pokemon, db, Type } = require('../../src/db.js');
 
 describe('Models', () => {
 
-  /* beforeAll(() => db.authenticate()
-    .catch((err) => {
-      console.error('Unable to connect to the database:', err);
-    })); */
   jest.setTimeout(10000);
 
   beforeAll( async () => {
@@ -92,9 +88,8 @@ describe('Models', () => {
 
   });
 
-  afterAll( async () => {
-    await db.sync({ force: true });
-    db.close();
+  afterAll(async()=>{
+    await db.close();
   });
 
 });

@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import pokegif from "../images/whos-that.gif";
 import style from "./CardPokemon.module.css";
+import pokegif from "../images/whos-that.gif";
 
 export default function CardPokemon(props){
 
     return (
             <div className={style.container}>
-                <div className={`${style.card} ${props.Types[0].name}`}>
+                <div className={style.card}>
                     <div className={style.imgbox}>
-                        <img src={props.image || pokegif} alt="pokemon"/>
+                        <img src={pokegif && props.image} alt="pokemon"/>
                         <h2>{props.name.toUpperCase()}</h2>
                     </div>
                     <div className={style.content}>

@@ -20,19 +20,22 @@ export default function Filter(){
         if(allPokemons){ 
             dispatch(setPokemons());
         }
-        if(Array.isArray(allPokemons))
+        
         return () => dispatch(setPokemons());   
+        
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch])
 
     useEffect(()=>{
-        if(Array.isArray(allPokemons)){ // si pokemons existe pero no es array de pokemons sino obj error
+        if(Array.isArray(allPokemons)){
             let pokemons=[...JSON.parse(JSON.stringify(allPokemons))]
             pokemons = filterService(pokemons, filter);
             if(pokemons && pokemons.length===0){
-                return dispatch(filterAndOrder({error: "Not Found!"}));
+                return dispatch(filterAndOrder({error: "No matches found"}));
             }
             dispatch(filterAndOrder(orderService(pokemons, order)));
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch, filter, order])
 
 
@@ -55,40 +58,44 @@ export default function Filter(){
     }
 
     return (
-            <div className={style.flex}>
+            <div className={style.flexContainer}>
                 <form>
                     <fieldset>
                         <legend className={style.legend}>FILTER BY ORIGIN</legend>
-                        <select className={style.select} onChange={(e)=>handleOnChangeFilter(e)} name="origin">
-                            <option value="all">all</option>
-                            <option value="originals">originals</option>
-                            <option value="created">created</option>
-                        </select>
+                            <select className={style.select} onChange={(e)=>handleOnChangeFilter(e)} name="origin">
+                                <option value="all">all</option>
+                                <option value="originals">originals</option>
+                                <option value="created">created</option>
+                            </select>
                     </fieldset>
                     <fieldset>      
                         <legend className={style.legend}>FILTER BY TYPE</legend>
-                        <div className={style.grid}>
-                        {pokemonsTypes?.length?
-                        pokemonsTypes.map((type)=><div className={style.input} key={type.id}><input id={type.id} onChange={(e)=>handleOnChangeFilter(e)} type="radio" value={type.name} name="Types" /><label htmlFor={type.id} className={`${style.input} ${type.name} label`} >{type.name}</label></div>):<></>} 
-                        </div>    
+                            <div className={style.grid}>
+                                {pokemonsTypes?.length?
+                                pokemonsTypes.map((type)=><div className={style.input} key={type.id}>
+                                    <input id={type.id} onChange={(e)=>handleOnChangeFilter(e)} type="radio" value={type.name} name="Types" />
+                                    <label htmlFor={type.id} className={`${style.input} ${type.name} label`} >{type.name}</label>
+                                    </div>)
+                                :<></>} 
+                            </div>    
                     </fieldset>
                     <fieldset>
                         <legend className={style.legend}>ORDER BY</legend>
-                        <div className={style.grid}>
-                        <div className={style.input}><input id="name" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="name" name="orderBy" /><label htmlFor="name" className={`${style.input} label`} > name</label></div>
-                        <div className={style.input}><input id="attack" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="attack" name="orderBy" /><label htmlFor="attack" className={`${style.input} label`} > attack</label></div>
-                        <div className={style.input}><input id="defense" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="defense" name="orderBy" /><label htmlFor="defense" className={`${style.input} label`} > defense</label></div>
-                        <div className={style.input}><input id="speed" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="speed" name="orderBy" /><label htmlFor="speed" className={`${style.input} label`} > speed</label></div>
-                        {/* <div className={style.input}><input id="hp" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="hp" name="orderBy" /><label htmlFor="hp" className={`${style.input} label`} > health point</label></div> */}
-                        <div className={style.input}><input id="weight" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="weight" name="orderBy" /><label htmlFor="weight" className={`${style.input} label`} > weight</label></div>
-                        <div className={style.input}><input id="height" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="height" name="orderBy" /><label htmlFor="height" className={`${style.input} label`} > height</label></div>
-                        </div>   
+                            <div className={style.grid}>
+                                <div className={style.input}><input id="name" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="name" name="orderBy" /><label htmlFor="name" className={`${style.input} label`} > name</label></div>
+                                <div className={style.input}><input id="attack" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="attack" name="orderBy" /><label htmlFor="attack" className={`${style.input} label`} > attack</label></div>
+                                <div className={style.input}><input id="defense" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="defense" name="orderBy" /><label htmlFor="defense" className={`${style.input} label`} > defense</label></div>
+                                <div className={style.input}><input id="speed" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="speed" name="orderBy" /><label htmlFor="speed" className={`${style.input} label`} > speed</label></div>
+                                {/* <div className={style.input}><input id="hp" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="hp" name="orderBy" /><label htmlFor="hp" className={`${style.input} label`} > health point</label></div> */}
+                                <div className={style.input}><input id="weight" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="weight" name="orderBy" /><label htmlFor="weight" className={`${style.input} label`} > weight</label></div>
+                                <div className={style.input}><input id="height" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="height" name="orderBy" /><label htmlFor="height" className={`${style.input} label`} > height</label></div>
+                            </div>   
                     </fieldset>
                     <fieldset>
                         <legend className={style.legend}>ORDER AS</legend>
-                        <div className={style.grid}>
-                        <div className={style.input}><input id="ASC" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="ASC" name="orderAs" /><label htmlFor="ASC" className={`${style.input} label`} > ascend</label></div>
-                        <div className={style.input}><input id="DES" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="DES" name="orderAs" /><label htmlFor="DES" className={`${style.input} label`} > descend</label></div>
+                            <div className={style.grid}>
+                            <div className={style.input}><input id="ASC" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="ASC" name="orderAs" /><label htmlFor="ASC" className={`${style.input} label`} > ascend</label></div>
+                            <div className={style.input}><input id="DES" onChange={(e)=>handleOnChangeOrder(e)} type="radio" value="DES" name="orderAs" /><label htmlFor="DES" className={`${style.input} label`} > descend</label></div>
                         </div>
                     </fieldset>
                 </form>

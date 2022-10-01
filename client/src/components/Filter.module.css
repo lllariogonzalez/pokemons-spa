@@ -1,90 +1,17 @@
-.input{
-    display: flex; 
-    justify-content: flex-start;
-    margin-top: 0.0625rem;
-    margin-bottom: 0.0625rem;
-    margin-left: 0.625rem;
-    margin-right: 0.625rem;
-}
-.grid label {
-    width: 4rem;
-    cursor: pointer;
-    padding: 1px 10px;
-    color: #fff;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    border-radius: 30px;
-    font-size: 16px;
-    transition: 0.5s;
-    user-select: none;
-}
-.grid input[type="radio"]{
-    display: none;
-}
-
-.grid .input {
-    display: flex; 
-    justify-content: center;
-    margin-top: 0.0625rem;
-    margin-bottom: 0.0625rem;
-    margin-left: 0.625rem;
-    margin-right: 0.625rem;
-}
-
-.grid input[type="radio"]:checked + label{
-    box-shadow: 0 0 10px 1px #fff;
-}
-
-.input input[type="radio"]{
-    display: none;
-}
-
-.input label {
-    color: #fff;
-    cursor: pointer;
-    user-select: none;
-}
-
-/* .form {
-    display:flex;
-    flex-direction:column;
-    width: 400px; 
-    margin: auto;
-} */
-
-.legend {
-    font-weight:500;
-    border-radius: 1.25rem;
-}
-
-.flex fieldset{
-    border-radius: 1.25rem;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.btn {
-    width: 100%;
-    margin-top: 7px;
-}
-
-.flex {
+.flexContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0;
 }
 
-.legend {
-    font-weight:500;
-    color: #fff;
+.flexContainer fieldset{
+    border-radius: 1.25rem;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.legend {
+    font-weight:500;
+    border-radius: 1.25rem;
 }
 
 .select {
@@ -97,3 +24,49 @@
     letter-spacing: 0.0725rem;
 }
 
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid label {
+    width: 4rem;
+    cursor: pointer;
+    padding: 1px 10px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    border-radius: 30px;
+    font-size: 16px;
+    transition: 0.5s;
+    user-select: none;
+}
+
+.grid input[type="radio"]{
+    display: none;
+}
+
+.input{
+    display: flex; 
+    justify-content: center;
+    margin: 0.0625rem 0.625rem;
+}
+
+.grid input[type="radio"]:checked + label{
+    box-shadow: 0 0 10px 1px #fff;
+}
+
+.input label {
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+}
+
+.btn {
+    width: 100%;
+    margin-top: 7px;
+}
+
+.legend {
+    font-weight:500;
+    color: #fff;
+}

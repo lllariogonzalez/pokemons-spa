@@ -3,16 +3,16 @@ const session = require('supertest');
 const server = require('../../src/app.js');
 const { Pokemon, db } = require('../../src/db.js');
 
-const request = session(server);  
-
-/* const pokemon = {
-  name: 'newpoke',
-}; */
+const request = session(server);
 
 describe('Pokemon routes', () => {
-  jest.setTimeout(30000);
+  jest.setTimeout(10000);
   beforeAll(async () => {
       //await db.authenticate().catch((err) => {console.error('Unable to connect to the database:', err)});
+      await db.authenticate()
+      .catch((err) => {
+        console.error('Unable to connect to the database:', err);
+      });
       await db.sync({ force: true });
     }
   );
@@ -68,7 +68,7 @@ describe('Pokemon routes', () => {
     it('should respond with a 404 status code when the id is invalid or inexistend', async()=>{
       const response = await request.get('/pokemons/a150');
       expect(response.statusCode).toBe(404);
-      expect(response.body.error).toBe("Pokemon not Found");
+      expect(response.body.error).toBe("No matching ID");
       }
     );
 
@@ -94,10 +94,8 @@ describe('Pokemon routes', () => {
 
   });
 
-
   afterAll(async()=>{
-    await db.sync({force: true});
-    db.close();
-  })
+    await db.close();
+  });
 
 });

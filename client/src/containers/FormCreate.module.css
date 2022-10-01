@@ -1,39 +1,21 @@
-.input {
-    display: flex; 
-    justify-content: space-between;
-    margin-top: 0.0625rem;
-    /* margin-left: 20px; */
-    /* background-clip: red; */
-}
-
-.input_text{
-    color: #fff;
-    border: none;
-    background: none;
-    border-bottom: 0.0625rem solid #fff;
-    outline: none;
-}
-
-.flex {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+.gridCreation{
+    margin: auto;
+    margin-top: 1.5625rem;
+    display: grid;
+    width: 90%;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    place-content: center;
+    justify-content: center;
     align-items: center;
-    gap: 3.125rem 0.625rem;
+    margin-bottom: 7rem;
 }
 
-.flexx{
+.form_div{
+    grid-column: 1/2;
     display: flex;
-    height: 100vh;
-}
-
-.flexcolum {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    gap: 3.125rem 0.625rem;
+    width: 100%;
 }
 
 .form {
@@ -43,21 +25,22 @@
     margin: auto;
 }
 
+.description_fieldset {
+    margin: 1px;
+    background-color: rgba(251, 0, 0, 0.878);
+    color: rgba(255, 255, 255, 0.851);
+    box-shadow: 1px 1px 20px 1px rgba(195, 0, 255, 0.379);
+    border-radius: 1.25rem;
+}
+
 .legend {
     font-weight:500;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    margin-left: 1.25rem;
-}
-
-.span {
-    font-weight:bold;
-    width: 100%; 
-    display: flex;
-    justify-content: flex-end;
+.input {
+    display: flex; 
+    justify-content: space-between;
+    margin-top: 0.0625rem;
 }
 
 .error {
@@ -68,33 +51,25 @@
     width: 100%;
     color: yellow;
     font-size: 0.75rem;
-  }
+}
 
+.input_text{
+    color: #fff;
+    border: none;
+    background: none;
+    border-bottom: 0.0625rem solid #fff;
+    outline: none;
+}
 
-/* .div_Sup {
-    position: absolute;
-    display: flex;
-    margin: 10px;
-    flex-direction: row;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    background: rgb(137,35,210);
-    background: linear-gradient(138deg, rgba(137,35,210,1) 13%, rgba(199,13,215,1) 37%, rgba(241,255,0,0.9026961126247374) 92%);
-} */
-
-
-.gridCreation{
-    margin: auto;
-    margin-top: 1.5625rem;
+.grid {
     display: grid;
-    width: 90%;
-    /* grid-template-columns: repeat(3, minmax(15vw,30vw)); */
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
-    /* grid-template-rows: auto; */
-    place-content: center;
-    justify-content: center;
-    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: 1.25rem;
+}
+
+.btnCreate{
+    margin-top: 0.9375rem;
+    text-align: center;
 }
 
 .oak_img_div {
@@ -109,90 +84,74 @@
     margin: auto;
     width: 100%;
     max-width: 20rem;
-    /* position: absolute;
-    left: 1.4em;
-    margin-top: 1.75em;
-    width: 82%;
-    height: 90%; */
 }
 
-.form_div{
-    grid-column: 1/2;
+/* MODAL CHILDREN */
+
+.flexContainer {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 40vw;
+    height: 30vh;
+    transform: translate(-50%, -50%);
     display: flex;
+    flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
+}
+
+.flexContent {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.image{
+    height: 40vh;
+    width: 30vh;
+}
+
+.flexcolum {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 0 0.625rem;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
     width: 100%;
+    margin-top: 3rem;
+    z-index: 2;
 }
 
-.description_fieldset {
-    margin: 1px;
-    background-color: rgba(251, 0, 0, 0.878);
-    color: rgba(255, 255, 255, 0.851);
-    box-shadow: 1px 1px 20px 1px rgba(195, 0, 255, 0.379);
-    border-radius: 1.25rem;
-}
-
-.btnCreate{
-    margin-top: 0.9375rem;
-    text-align: center;
-}
-
-/* BUTTON ESFERA */
-.btnPoke{
-    position: relative;
-    width: 1.875rem;
-    height: 1.875rem;
-    background: #030007;
-    border-radius: 50%;
-    overflow: hidden;
-    transform: translate(-50%, -50%);
-    transition: 0.5s;
-  }
-  
-  .btnPoke::after{
-    content: "";
+.gifok {
     position: absolute;
-    width: 1.875rem;
-    height: 0.9375rem;
-    background: red;
-    top:0;
-    left:0;
-    opacity: 100;
-    transition: 0.5s;
+    top: -10px;
+    left: -50px;
+    z-index: 1;
+    width: 50vh;
+}
 
-  }
+.gifLoading {
+    z-index: 1;
+    width: 18rem;
+}
 
-  .btnPoke::before{
-    content: "";
+.gifError{
     position: absolute;
-    width: 1.875rem;
-    height: 0.9375rem;
-    background: #fff;
-    bottom:0;
-    left:0;
-    opacity: 100;
-    transition: 0.5s;
-  }
-
-  .btnPoke:hover {
-    width: 100px;
-    border-radius: 10px;
-    border-top: 2px solid #f00;
-    border-right: 2px solid #f00;
-    border-bottom: 2px solid #f00;
-    border-left: 2px solid #f00;
-    box-shadow: 0 0 40px #f00;
-
-  }
-
-  .btnPoke:hover::before{
-    width: 18.75rem;
-    opacity: 0;
-  }
-  .btnPoke:hover::after{
-    width: 18.75rem;
-    opacity: 0;
-  }
+    top: -20px;
+    left: 5px;
+    z-index: 1;
+    width: 35vh;
+}
 
 @media (max-width: 1300px) {
     .gridCreation{
@@ -206,11 +165,56 @@
 }
 
 @media (max-width: 900px) {
+    .description_fieldset {
+        margin: 1px;
+        background-color: var(--navbar-dark-mode)
+    }
+
+    .flexContainer {
+        width: 60vw;
+        height: 60vh;
+    }
+    .flexContent{
+        flex-direction: column;
+    }
+    .image{
+        height: 20vh;
+        width: 30vh;
+    }
     .gridCreation{
         grid-template-columns: 80vw;
         grid-template-rows: auto;
     }
     .btnCreate{
         margin-top: 2.1875rem;
+    }
+
+    .gifok {
+        top: 50px;
+        left: -60px;
+        width: 40vh;
+    }
+
+    .gifError{
+        top: 20px;
+        left: -20px;
+        z-index: 1;
+        width: 30vh;
+    }
+}
+
+@media (max-height: 600px) {
+    .gifError{
+        top: 0.625rem;
+        left: 0.625rem;
+        z-index: 1;
+    }
+    .gifok {
+        top: 20px;
+        left: -10px;
+    }
+    
+    .flex{
+        margin-top: 0;
     }
 }

@@ -18,11 +18,11 @@ const getPokemons = async (req, res) => {
                 attack: data.stats.find(e=>e.stat.name === 'attack').base_stat,
                 defense: data.stats.find(e=>e.stat.name === 'defense').base_stat,
                 speed: data.stats.find(e=>e.stat.name === 'speed').base_stat
-            }])
+            }]);
         } catch (error) {
             const pokemonFind = await Pokemon.findOne({where: {name: name}, include: Type});
             if(pokemonFind) {
-                return res.json([pokemonFind])
+                return res.json([pokemonFind]);
             } else {
                 return res.status(404).json({error: "Pokemon not Found"});
             }
@@ -54,7 +54,7 @@ const getPokemons = async (req, res) => {
         dbPokemons? res.json([...pokeApiData, ...dbPokemons]): res.json(pokeApiData);
 
     } catch (error) {
-        return res.status(404).json({error: "Pokemons not Founds, reload the page"});
+        return res.status(404).json({error: "Pokemons not Found, reload the page"});
     }
 };
 
@@ -80,7 +80,7 @@ const getPokemonsById = async (req, res) => {
             const pokeFind = await Pokemon.findByPk(idPokemon, {include: Type});
             if(pokeFind) return res.json(pokeFind);
         }
-        return res.status(404).json({error: "Pokemon not Found"});
+        return res.status(404).json({error: "No matching ID"});
     }
 };
 

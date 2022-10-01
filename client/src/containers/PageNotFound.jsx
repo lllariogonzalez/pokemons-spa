@@ -8,7 +8,7 @@ const PageNotFound = () => {
 
   return (
     <div style={{color:"#fff"}}>
-      <img style={{maxWidth: "40vh"}} src={error} alt="image/gif not found 404"/>
+      <img style={{maxWidth: "40vh"}} src={error} alt="Not found 404"/>
       <h1>404 PAGE NOT FOUND</h1>
       <p>You seem to be lost, shall we go back home?</p>
       <button onClick={()=>history.replace("/home")}>HOME</button>

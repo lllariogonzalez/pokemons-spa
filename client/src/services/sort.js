@@ -2,7 +2,7 @@ export default function orderService (array, option){
 
     const property = option.orderBy
 
-    if(Array.isArray(array) && array.length>0){
+    if(Array.isArray(array) && array.length>1){
         array.sort(function(a,b){
     
             if (a[property] > b[property]) {
@@ -20,4 +20,4 @@ export default function orderService (array, option){
     }
 
     return array;
-}
+};

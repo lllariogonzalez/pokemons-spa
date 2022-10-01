@@ -7,13 +7,11 @@ export default function Nav(){
 
     return (
         <div className={`${style.bg} ${style.align}`}>
-            <img className={style.logo} src={logo} alt="logoPokemonHenry"/>
+            <NavLink exact to='/'><img className={style.logo} src={logo} alt="logo PokeApi"/></NavLink>
             <div className={style.align}>
                 <NavLink to='/home'>Home</NavLink>
                 <NavLink to='/create'>Create Pokemon</NavLink>
             </div>
-            {/* <NavLink to='/favourites'>Create Pokemon</NavLink> */}
         </div>
     )
 }
-

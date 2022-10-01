@@ -1,13 +1,13 @@
 .modal {
     position: fixed;
-    top: 40%;
+    top: 50%;
     left: 50%;
-    width: 500px;
-    height: 200px;
+    width: 35vw;
+    height: 30vh;
     transform: translate(-50%, -50%);
     background-color: #fff;
-    border-radius: 10px;
-    padding: 30px;
+    border-radius: 0.625rem;
+    padding: 1.875rem;
     z-index: 1000;    
 }
 
@@ -19,4 +19,11 @@
     bottom: 0;
     background-color: rgba(133, 68, 232, 0.7);
     z-index: 1000;
+}
+
+@media (max-width: 900px){
+    .modal{
+        width: 60vw;
+        height: 45vh;
+    }
 }

@@ -1,7 +1,8 @@
 import filterService from "../services/filter.js";
 import orderService from "../services/sort.js";
 import validate from "../services/validators.js";
-
+import paging from "../services/paging.js";
+//https://jestjs.io/docs/expect
 describe("Validators <FormCreate />", ()=>{
 
     const creation = {
@@ -68,6 +69,20 @@ describe("Filter and Sort <Filter />", ()=>{
             expect(orderService(array, {})).toEqual(array);
         });
         
+    });
+
+});
+
+describe("Paging Cards <SectionPokemons />", ()=>{
+
+    const pag = 4;
+
+    describe("paging", ()=>{
+        it("Should return an array with a length equal to pag", ()=>{
+            expect(paging(pag)).toBeInstanceOf(Array);
+            expect(paging(pag)).toHaveLength(4);
+            expect(paging(pag)).toEqual([1,2,3,4]);
+        });
     });
 
 });

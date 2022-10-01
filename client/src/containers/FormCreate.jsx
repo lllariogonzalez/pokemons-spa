@@ -2,17 +2,17 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPokemons, getTypes } from "../redux/actions";
+import Modal from "../components/Modal";
+import CardDetail from "../components/CardDetail";
 import style from "./FormCreate.module.css"
 import validate from "../services/validators";
-import Modal from "../components/Modal";
-import PreviewCardCreation from "../components/PreviewCardCreation";
-//images
 import oka01 from "../images/oakSmall.png";
 import load from "../images/loadingPikachu.gif";
 import loadError from "../images/404-error-pokegif.gif";
 import loadOk from "../images/pikaPopUp.gif";
 
-export default function FormCreate(props){
+export default function FormCreate(){
+
     const history = useHistory();
     const pokemonsTypes= useSelector(state=>state.pokemonsTypes);
     const dispatch= useDispatch();
@@ -22,6 +22,7 @@ export default function FormCreate(props){
     const [error, setError] = useState({
         disabled: true,
     })
+
     const [creation, setCreation] = useState({
         name: "",
         weight: "",
@@ -38,26 +39,8 @@ export default function FormCreate(props){
         if(!pokemonsTypes){
             dispatch(getTypes());
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[dispatch])
-
-    const handleOnSubmit = (e)=>{
-        
-        e.preventDefault();
-
-        const newPokemon = {
-            ...creation,
-            Types: creation.Types.map(type=>type.id)
-        }
-
-        fetch(`http://localhost:3001/pokemons`, {method:"POST", headers: {
-        'Content-Type': 'application/json'}, body: JSON.stringify(newPokemon)})
-        .then(response=> response.json())
-        .then(data => {
-            setTimeout(()=>setIsCreated(data), 3000) 
-        })
-
-        dispatch(getAllPokemons());
-    }
 
     const handleOnChange = (e)=>{
         setCreation((prevState)=>{
@@ -95,6 +78,25 @@ export default function FormCreate(props){
         }
     }
 
+    const handleOnSubmit = (e)=>{
+        
+        e.preventDefault();
+
+        const newPokemon = {
+            ...creation,
+            Types: creation.Types.map(type=>type.id)
+        }
+
+        fetch(`${process.env.REACT_APP_API}/pokemons`, {method:"POST", headers: {
+        'Content-Type': 'application/json'}, body: JSON.stringify(newPokemon)})
+        .then(response=> response.json())
+        .then(data => {
+            setTimeout(()=>setIsCreated(data), 3000) 
+        })
+
+        dispatch(getAllPokemons());
+    }
+
     const handleOnClose=()=>{
         setIsModalOpen(false);
         setIsCreated();
@@ -115,15 +117,32 @@ export default function FormCreate(props){
     }
 
     return (
+
         <div className={style.gridCreation}>
             <div className={style.form_div}>
                 <form className={style.form} onSubmit={(e)=>handleOnSubmit(e)}>
                     <fieldset className={style.description_fieldset}>
                         <legend className={style.legend}>POKEMON DESCRIPTION</legend>
-                        <div className={style.input}><label>Name:</label><span className={style.error}>{error.name}</span><input className={style.input_text} value={creation.name} name="name" placeholder="lower case text only..." maxLength="12" autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
-                        <div className={style.input}><label>Image:</label><span className={style.error}>{error.image}</span><input className={style.input_text} value={creation.image} name="image" type="url" placeholder="image URL..." autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
-                        <div className={style.input}><label>Weight:</label><span className={style.error}>{error.weight}</span><input className={style.input_text} value={creation.weight} name="weight" type="number" min="1" step="0.01" placeholder="less than 1000 kgs" autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
-                        <div className={style.input}><label>Height:</label><span className={style.error}>{error.height}</span><input className={style.input_text} value={creation.height} name="height" type="number" min="1" step="0.01" placeholder="lower than 10 fts" autoComplete="off" onChange={(e)=>handleOnChange(e)} /></div>
+                        <div className={style.input}>
+                            <label>Name:</label>
+                            <span className={style.error}>{error.name}</span>
+                            <input className={style.input_text} value={creation.name} name="name" placeholder="lower case text only..." maxLength="12" autoComplete="off" onChange={(e)=>handleOnChange(e)} />
+                        </div>
+                        <div className={style.input}>
+                            <label>Image:</label>
+                            <span className={style.error}>{error.image}</span>
+                            <input className={style.input_text} value={creation.image} name="image" type="url" placeholder="image URL..." autoComplete="off" onChange={(e)=>handleOnChange(e)} />
+                        </div>
+                        <div className={style.input}>
+                            <label>Weight:</label>
+                            <span className={style.error}>{error.weight}</span>
+                            <input className={style.input_text} value={creation.weight} name="weight" type="number" min="1" step="0.01" placeholder="less than 1000 kgs" autoComplete="off" onChange={(e)=>handleOnChange(e)} />
+                        </div>
+                        <div className={style.input}>
+                            <label>Height:</label>
+                            <span className={style.error}>{error.height}</span>
+                            <input className={style.input_text} value={creation.height} name="height" type="number" min="1" step="0.01" placeholder="lower than 10 fts" autoComplete="off" onChange={(e)=>handleOnChange(e)} />
+                        </div>
                     </fieldset>
                     <fieldset className={style.description_fieldset}>
                         <legend className={style.legend}>POKEMON STATS</legend>
@@ -145,30 +164,29 @@ export default function FormCreate(props){
                 </form>
             </div>
             <div className={style.oak_img_div}>
-                <img src={oka01} className={style.oak_img} />
+                <img src={oka01} className={style.oak_img} alt="oak profesor" />
             </div>
-            <PreviewCardCreation creation={creation} />
+            <CardDetail pokemon={creation} />
             {isModalOpen && 
                 <Modal>
-                    <div className={style.flex}>
-                        <div className={style.flex}>
+                    <div className={style.flexContainer}>
                         { isCreated?.ok?
 
-                            <div className={style.flex}>
-                                <div style={{width: "150px"}}>
-                                    <img className="gifok" src={loadOk} alt="ok"/>
+                            <div className={style.flexContent}>
+                                <div className={style.image}>
+                                    <img className={style.gifok} src={loadOk} alt="ok"/>
                                 </div>
                                 <div className={style.flexcolum}>
                                     <div>
-                                        <h1>POKEMON CREATED</h1>
+                                        <h2>POKEMON CREATED</h2>
                                         <span>Cool! Find your pokemon in home</span>
                                     </div>
                                     <div className={style.flex}>
                                             { isCreated? 
-                                            <button onClick={()=>history.push("/home")}>GO HOME</button> 
+                                            <button onClick={()=>history.push("/home")}>HOME</button> 
                                             : null}
                                             { isCreated?
-                                            <button onClick={handleOnClose}>{isCreated?.ok? "CREATE ANOTHER" : "TRY AGAIN"}</button> 
+                                            <button onClick={handleOnClose}>CREATE ANOTHER</button> 
                                             : null}
                                     </div>
                                 </div>
@@ -176,43 +194,38 @@ export default function FormCreate(props){
 
                         : isCreated?.error?
 
-                            <div className={style.flex}>
-                                <div style={{width: "150px"}}>
-                                    <img className="gif" src={loadError} alt="failed"/>
+                            <div className={style.flexContent}>
+                                <div className={style.image}>
+                                    <img className={style.gifError} src={loadError} alt="failed"/>
                                 </div>
                                 <div className={style.flexcolum}>
-                                    <div>
-                                        <h1>SOMETHING FAILED</h1>
+                                    <div className={style.flexcolum}>
+                                        <h2>SOMETHING FAILED</h2>
                                         <span>{isCreated.error}</span>
                                     </div>
                                     <div className={style.flex}>
                                         { isCreated? 
-                                        <button onClick={()=>history.push("/home")}>GO HOME</button> 
+                                        <button onClick={()=>history.push("/home")}>HOME</button> 
                                         : null}
                                         { isCreated?
-                                        <button onClick={handleOnClose}>{isCreated?.ok? "CREATE ANOTHER" : "TRY AGAIN"}</button> 
+                                        <button onClick={handleOnClose}>TRY AGAIN</button> 
                                         : null}
                                     </div>
                                 </div>
                             </div>
 
                         : 
-                            <div className={style.flexcolum}>
-                                <div style={{height: "70px"}}>
-                                    <img className="gifload" src={load} alt="loading"/>
-                                </div>
-                                <div>
+                            <div className={style.flexContent}>
+                                <div className={style.flexcolum}>
+                                    <img className={style.gifLoading} src={load} alt="loading"/>
                                     <br />
-                                    <h1>CREATING POKEMON</h1>
+                                    <h2 style={{margin:0, padding:0}}>CREATING POKEMON</h2>
                                 </div>
                             </div>
                         }
-                        
                         </div>
-                    </div>
                 </Modal>
             }        
         </div>
-
     )
 }

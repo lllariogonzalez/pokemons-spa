@@ -13,4 +13,4 @@ export default function filterService (array, option){
     }
 
     return array;
-}
+};
