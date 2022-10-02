@@ -31,7 +31,7 @@
 
 .section {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
     place-content: center;
     background-color: none;
     margin: 0 auto;
@@ -58,10 +58,10 @@
     font-weight: bold;
 }
 
-.pagination{
-    display: flex;
-    justify-content: center;
-    width: 100vw;
+@media (max-width: 1200px){
+    .section {
+        max-width: 60vw;
+    }
 }
 
 @media (max-width: 900px){
@@ -74,5 +74,11 @@
     }
     .tools{
         flex-direction: column;
+    }
+
+    .pagination{
+        display: flex;
+        justify-content: center;
+        width: 100vw;
     }
 }

@@ -81,10 +81,11 @@ export default function FormCreate(){
     const handleOnSubmit = (e)=>{
         
         e.preventDefault();
-
+        
         const newPokemon = {
             ...creation,
-            Types: creation.Types.map(type=>type.id)
+            Types: creation.Types.map(type=>type.id),
+            image: creation.image.length===0? undefined: creation.image
         }
 
         fetch(`${process.env.REACT_APP_API}/pokemons`, {method:"POST", headers: {

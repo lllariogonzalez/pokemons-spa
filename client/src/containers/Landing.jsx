@@ -1,7 +1,4 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
-import { getAllPokemons } from "../redux/actions";
 //styles
 import style from "./Landing.module.css";
 //images
@@ -12,12 +9,6 @@ import icoPoke from '../images/ico-pokeball.png';
 
 
 export default function Landing(){
-
-    const dispatch = useDispatch();
-
-    useEffect(()=>{
-        dispatch(getAllPokemons());
-    }, [dispatch]);
     
     return(
         <div className={style.flexContainer}>
@@ -51,6 +42,4 @@ export default function Landing(){
             </div>
         </div>
     )
-}
-
-
+};

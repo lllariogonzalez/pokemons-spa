@@ -9,7 +9,7 @@ export default function CardPokemon(props){
             <div className={style.container}>
                 <div className={style.card}>
                     <div className={style.imgbox}>
-                        <img src={pokegif && props.image} alt="pokemon"/>
+                        <img src={ props.image || pokegif} alt="pokemon"/>
                         <h2>{props.name.toUpperCase()}</h2>
                     </div>
                     <div className={style.content}>

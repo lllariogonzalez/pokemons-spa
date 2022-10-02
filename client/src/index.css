@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dangrek&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+*{
+  font-family: Acme, "Indie Flower",-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen';
+}
+
 :root {
   --navbar-dark-mode: #24252A;
 }
@@ -11,7 +21,7 @@ body {
   grid-template-rows: auto 1fr auto;
   position: relative;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: Righteous, Acme, "Indie Flower",-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -34,6 +44,9 @@ code {
 /* BUTTON DEFAULT */
 
 button {
+  font-family: Acme, "Indie Flower",-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   text-align: center;
   padding: 2px 20px;
   margin: 5px;
