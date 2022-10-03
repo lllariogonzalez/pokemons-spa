@@ -6,7 +6,7 @@ import Modal from "../components/Modal";
 import CardDetail from "../components/CardDetail";
 import style from "./FormCreate.module.css"
 import validate from "../services/validators";
-import oka01 from "../images/oakSmall.png";
+import oka01 from "../images/oak.png";
 import load from "../images/loadingPikachu.gif";
 import loadError from "../images/404-error-pokegif.gif";
 import loadOk from "../images/pikaPopUp.gif";
