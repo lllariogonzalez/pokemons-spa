@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.442909c0.chunk.css",
+    "main.js": "/static/js/main.42f651ba.chunk.js",
+    "main.js.map": "/static/js/main.42f651ba.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.0a9e9d62.js",
+    "runtime-main.js.map": "/static/js/runtime-main.0a9e9d62.js.map",
+    "static/js/2.28d604ee.chunk.js": "/static/js/2.28d604ee.chunk.js",
+    "static/js/2.28d604ee.chunk.js.map": "/static/js/2.28d604ee.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.442909c0.chunk.css.map": "/static/css/main.442909c0.chunk.css.map",
+    "static/js/2.28d604ee.chunk.js.LICENSE.txt": "/static/js/2.28d604ee.chunk.js.LICENSE.txt",
+    "static/media/404-error-pokegif.10557289.gif": "/static/media/404-error-pokegif.10557289.gif",
+    "static/media/frameCharizard.f76801d7.gif": "/static/media/frameCharizard.f76801d7.gif",
+    "static/media/framePokemons.1838e5c4.gif": "/static/media/framePokemons.1838e5c4.gif",
+    "static/media/index.css": "/static/media/ico-pokeball.1e479e0a.png",
+    "static/media/loadingPikachu.049d61aa.gif": "/static/media/loadingPikachu.049d61aa.gif",
+    "static/media/logo.225e290c.png": "/static/media/logo.225e290c.png",
+    "static/media/oakSmall.b729670a.png": "/static/media/oakSmall.b729670a.png",
+    "static/media/pikaPopUp.ff9eb741.gif": "/static/media/pikaPopUp.ff9eb741.gif",
+    "static/media/pokedexBottomHalf.1b4f0b93.png": "/static/media/pokedexBottomHalf.1b4f0b93.png",
+    "static/media/pokedexTopHalf.ba46ca39.png": "/static/media/pokedexTopHalf.ba46ca39.png",
+    "static/media/whos-that.032c2912.gif": "/static/media/whos-that.032c2912.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0a9e9d62.js",
+    "static/js/2.28d604ee.chunk.js",
+    "static/css/main.442909c0.chunk.css",
+    "static/js/main.42f651ba.chunk.js"
+  ]
+}
