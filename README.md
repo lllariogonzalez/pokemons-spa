@@ -1,3 +1,7 @@
+
+![Website deploy status](https://img.shields.io/website?url=https%3A%2F%2Fpoke-app-seven.vercel.app%2F)
+![Website deploy status](https://img.shields.io/website?label=server&url=https%3A%2F%2Fpokeapp.up.railway.app%2F)
+
 ![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
 # Individual Project - Henry Pokemon
