@@ -20,7 +20,7 @@ export default function Footer(){
             <a href="https://www.soyhenry.com/" target="_blank" rel="noreferrer">
                 <img style={{width: "2rem"}} src={logoHenry} alt="Henry-logo" />
             </a>
-            <span>HENRY LABS - Mario Gonzalez</span>
+            <span>HENRY LABS - <a href="https://lllariogonzalez.tech">Mario Gonzalez</a></span>
         </div>
     )
 };
