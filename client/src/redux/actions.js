@@ -12,7 +12,7 @@ export const getAllPokemons = () => dispatch => {
             return dispatch({ type: GET_ALL_POKEMONS, payload: data });
         })
         .catch((error) => {
-            alert(`El servidor está desplegado 🚀 en Railway.app de manera gratuita, y en estos momentos se encuentra fuera de servicio, puedes mirar el repositorio y probarlo localmente. O puedes intentarlo otro día. Generalmente el servicio se encuentra activo del 1 al 20 de cada mes. Discule las molestias, gracias por su visita! 💛`)
+            alert(`El servidor está desplegado 🚀 en Railway.app de manera gratuita, y en estos momentos se encuentra fuera de servicio, puedes mirar el repositorio y probarlo localmente. O puedes intentarlo otro día. Generalmente el servicio se encuentra activo del 1 al 20 de cada mes. Disculpe las molestias, gracias por su visita! 💛`)
         })
 };
 
